@@ -4,5 +4,4 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("I don't think I like this xD")
-
+    return render(request, "ASPO_new/index.html")
