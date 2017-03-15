@@ -20,5 +20,4 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^test/', include('ASPO_new.urls')),
     url(r'^admin/', admin.site.urls),
-
 ]
