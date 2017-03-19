@@ -9,3 +9,9 @@ def index(request):
 
 def home(request):
     return render(request, "ASPO_new/home.html")
+
+def menu(request):
+    return render(request, "ASPO_new/menu.html")
+
+def footer(request):
+    return render(request, "ASPO_new/footer.html")

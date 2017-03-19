@@ -709,7 +709,6 @@ a.list-group-item {
 	font-size: 40px;
 	opacity: 0;
 	transition: opacity ease-in-out 0.5s;
-	background-position: center;
 }
 
 .question-info {
