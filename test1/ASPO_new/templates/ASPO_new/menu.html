@@ -1,4 +1,5 @@
 {% load static %}
+<script type="text/javascript" src="{% static 'ASPO_new/controllers/pageCtrl.js' %}"></script>
 <nav class="navbar navbar-default navbar-static-top" id="header">
   <div class="container">
 	<div class="navbar-header">
@@ -18,7 +19,7 @@
 			<a href="{{menu.link}}"  class="dropdown-toggle">{{menu.text}}</a>
 				<ul ng-if="menu.subpages.length > 0" class="dropdown-menu" role="menu">
 					<li ng-repeat="sublink in menu.subpages">
-						<a href="{{menu.link + '/' + sublink.link }}">{{sublink.name}}</a>
+						<a href="{# {menu.link + '/' + sublink.link }#}">{# {sublink.name}#}</a>
 				</ul>
 		</li>
 	  </ul>

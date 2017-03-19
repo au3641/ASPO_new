@@ -3,8 +3,7 @@ main-color: #f68f15
 main-color-hover: #
 */
 
-html {	
-	background: url("../img/bg-img.jpg") no-repeat center center fixed; 
+html {
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -710,7 +709,6 @@ a.list-group-item {
 	font-size: 40px;
 	opacity: 0;
 	transition: opacity ease-in-out 0.5s;
-	background: #f68f15 url(../img/arrow.png) no-repeat;
 	background-position: center;
 }
 

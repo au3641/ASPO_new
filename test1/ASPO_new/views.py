@@ -5,4 +5,7 @@ from django.shortcuts import render
 
 
 def index(request):
-    return render(request, "ASPO_new/index_original.html")
+    return render(request, "ASPO_new/index.html")
+
+def home(request):
+    return render(request, "ASPO_new/home.html")
