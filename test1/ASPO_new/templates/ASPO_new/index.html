@@ -1,62 +1,15 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="ASPO">
-	<head>
-	  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-	  <link rel="icon" type="image/x-icon" href="../../../../zdravo-mednozje-old/zdravo-mednozje/src/main/webapp/favicon.ico?v1.0" />
-	  
-	  <title>ASPO - Spletna aplikacija za prepoznavanje in informiranje o spolno prenosljivih okužbah </title>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
 
-	  <!-- CSS  -->
-	  <link href='//fonts.googleapis.com/css?family=Open+Sans:300&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
-	  <link href="../../../../zdravo-mednozje-old/zdravo-mednozje/src/main/webapp/css/bootstrap.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	  <link href="../../../../zdravo-mednozje-old/zdravo-mednozje/src/main/webapp/css/perfect-scrollbar.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	  <link href="//cdn.rawgit.com/noelboss/featherlight/1.3.2/release/featherlight.min.css" type="text/css" rel="stylesheet" title="Featherlight Styles" />
-	  <link href="../../../../zdravo-mednozje-old/zdravo-mednozje/src/main/webapp/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-	</head>
-	
-	<body ng-controller="PageCtrl as main">
-		<div id="wrap">
-			<!-- <perfect-scrollbar id="main-scroll" wheel-propagation="true" wheel-speed="50"> -->
-				<header>
-					<div ng-include="'app/pages/menu.html'"></div>
-				</header>
-							
-				<div class="container-fluid" id="main">
-					<div class="row">
-						<div ng-view class="view-animate"></div>
-					</div>
-				</div>
-			<!-- </perfect-scrollbar> -->
-		</div>
-		
-		<footer>
-			<div ng-include="'app/pages/footer.html'"></div>
-		</footer>
-		<div class="back-to-top"></div>
-		
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="//cdn.rawgit.com/noelboss/featherlight/1.3.2/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/angular.min.js"></script>
-		<script src="js/angular-animate.min.js"></script>
-		<script src="js/angular-sanitize.min.js"></script>
-		<script src="js/marked.min.js"></script>
-		<script src="js/angular-route.min.js"></script>
-		<script src="js/ui-bootstrap.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<script src="js/script.js"></script>
-		
-		<!-- Angular App JS -->
-		<script src="app/app.js"></script>
-		<script src="app/directives/angular-marked.js"></script>
-		<script src="app/directives/lightbox-img.js"></script>
-		<script src="app/controllers/surveyCtrl.js"></script>
-		<script src="app/controllers/blankCtrl.js"></script>
-		<script src="app/controllers/symptomsCtrl.js"></script>
-		<script src="app/controllers/stdInfoCtrl.js"></script>
-		<script src="app/controllers/pageCtrl.js"></script>
-		<script src="app/controllers/examplesCtrl.js"></script>
-		<script src="app/services/aspoService.js"></script>
-	
-	</body>
+    <link rel="icon" type="image/x-icon" href="{% static "ASPO_new/image/favicon.ico" %}" />
+
+    <title>Title</title>
+</head>
+<body>
+
+    <img src="{% static "ASPO_new/image/logo-fri2.png" %}" alt="My image"/>
+</body>
 </html>
