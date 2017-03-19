@@ -19,7 +19,7 @@
 			<a href="{{menu.link}}"  class="dropdown-toggle">{{menu.text}}</a>
 				<ul ng-if="menu.subpages.length > 0" class="dropdown-menu" role="menu">
 					<li ng-repeat="sublink in menu.subpages">
-						<a href="{# {menu.link + '/' + sublink.link }#}">{# {sublink.name}#}</a>
+						<a href="{% templatetag openvariable %}menu.link + '/' + sublink.link {% templatetag closevariable %}">{% templatetag openvariable %}sublink.name{% templatetag closevariable %}</a>
 				</ul>
 		</li>
 	  </ul>
