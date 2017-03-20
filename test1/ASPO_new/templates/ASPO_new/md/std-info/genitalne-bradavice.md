@@ -1,3 +1,4 @@
+{% load static %}
 ###Genitalne bradavice
 ####Kaj je to?
 Danes poznamo prek 150 različnih genotipov humanega virusa papiloma (HPV). Vsaj 45 jih povzroča spremembe v predelu spolovila in zadnjika, od teh je 12 takih z visokim tveganjem za razvoj raka na materničnem vratu (najpomembnejša sta HPV-16 in HPV-18) ter 12 takih z nizkim tveganjem (najpogostejša sta HPV-6 in HPV-11), ki povzročajo genitalne bradavice in izrastke v grlu.
@@ -10,7 +11,7 @@ Prenos okužbe poteka predvsem z nezaščitenim spolnim odnosom (vaginalni, oral
 ####Kakšni so simptomi in znaki?
 Okužba s HPV pogosto poteka brez bolezenskih simptomov in znakov in je prehodna. Lahko pa se kaže z nad ravnjo kože ali sluznice privzdignjenimi izrastki (bradavicami). Ti so lahko številni ali osamljeni, pojavijo se na zunanjih ali notranjih spolovilih ter v zadnjiku ali okoli njega. Spremembe lahko spontano izzvenijo, ostanejo nespremenjene, se večajo ali jih nastane več.
 
-<lightbox-img img="'./media/genitalne-bradavice.jpg'" text="'Primer genitalnih bradavic. Levo na moškem spolovilu, desno na zadnjiku.'">Kako izgledajo genitalne bradavice?</lightbox-img>
+<lightbox-img img="'{% static 'ASPO_new/image/genitalne-bradavice.jpg' %}'" text="'Primer genitalnih bradavic. Levo na moškem spolovilu, desno na zadnjiku.'">Kako izgledajo genitalne bradavice?</lightbox-img>
 
 ####Kaj lahko naredim, če me skrbi, da sem se okužil/a? 
 Ob pojavu simptomov in znakov okužbe, ali če je prisotno kakršnokoli tveganje za okužbo, poišči pomoč pri izbranem osebnem zdravniku, ki te bo napotil k ustreznemu specialistu.

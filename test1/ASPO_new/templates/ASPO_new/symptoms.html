@@ -12,11 +12,11 @@
                         <span class="icon-bar"></span>
                     </div>
                     <div class="list-group">
-                        <a href="#/bolezenski-znaki/izcedek" class="list-group-item {{ file == 'izcedek' ? 'active' : ''}}">
+                        <a href="#/bolezenski-znaki/izcedek" class="list-group-item {% templatetag openvariable %} file == 'izcedek' ? 'active' : ''{% templatetag closevariable %}">
                             Izcedek iz spolovila
                         </a>
 
-                        <a href="#/bolezenski-znaki/razjeda" class="list-group-item {{ file == 'razjeda' ? 'active' : ''}}">
+                        <a href="#/bolezenski-znaki/razjeda" class="list-group-item {% templatetag openvariable %} file == 'razjeda' ? 'active' : ''{% templatetag closevariable %}">
                             Razjeda na spolovilu
                         </a>
 
@@ -30,7 +30,7 @@
                         </div>
 						
 						<div ng-switch-when="">
-                            <div marked ng-include="'app/pages/symptoms/symptoms.md'">
+                            <div marked ng-include="'ASPO_new/md/symptoms/symptoms.md'">
 						</div>
                     </div>
                 </div>

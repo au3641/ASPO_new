@@ -1,9 +1,11 @@
+{% load static %}
+
 <div id="page-med-exam">
 	<h2 class="container">Kam po pomoč, če me skrbi, da imam spolno prenosljivo okužbo (SPO)?</h2>
 	
 	<div class="content-block">
 		<div class="container">
-			<div marked ng-include="'app/pages/testing.md'"></div>
+			<div marked ng-include="'{%  static 'ASPO_new/md/testing.md' %}'"></div>
 			<accordion>
 				<accordion-group
 					heading="Ljubljana">

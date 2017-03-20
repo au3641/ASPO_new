@@ -1,3 +1,4 @@
+{% load static %}
 ###Gonoreja
 ####Kaj je to?
 Gonoreja je zelo razširjena spolno prenosljiva okužba (SPO), ki je v zadnjih letih močno v porastu. Povzroča jo bakterija *Neisseria gonorrhoeae* (gonokok). Večinoma prizadene sluznico spolovil, lahko pa tudi sluznico zadnjika, žrela in oči.
@@ -10,7 +11,7 @@ Tveganje za okužbo po enkratni heteroseksualni izpostavitvi je za moške 20%, z
 Pri okuženih moških se skoraj vedno pojavijo bolezenski znaki. Čas od okužbe do pojava znakov bolezni je kratek, običajno traja od 3 do 7 dni. Sprva se pojavi rumenkast izcedek iz sečnice, ki pa se nato spremeni v gost gnojen izcedek temno rumene barve. Značilno je, da moški izcedek opazijo zjutraj pred prvim uriniranjem. Izcedek lahko spremljata srbenje sluznice sprednjega dela sečnice in pekoča bolečina pri uriniranju. Če akutnega vnetja ne zdravimo, preide po približno dveh tednih v kronično vnetje z minimalnim izcedkom in neprestanim tiščanjem na vodo, bolečim uriniranjem in bolečimi erekcijami. Ob zaključku uriniranja je lahko v seču prisotna kri.
 Pri ženskah najpogosteje pride do akutnega vnetja materničnega vratu in sečnice, ponavadi do 10 dni po okužbi. Simptomi in znaki so precej podobni kot pri moških, torej gost rumen gnojen izcedek iz nožnice, pekoče in boleče uriniranje ter srbenje nožnice, lahko se pojavi tudi krvavitev iz nožnice in bolečina v spodnjem delu trebuha. Pri več kot polovici žensk gonoreja poteka brez bolezenskih znakov in se je okužena ženska večinoma ne zaveda.
 
-<lightbox-img img="'./media/izcedek-pri-gonoreji.jpg'" text="'Izcedek pri gonoreji'">Kako izgleda izcedek pri gonoreji?</lightbox-img>
+<lightbox-img img="'{% static 'ASPO_new/image/izcedek-pri-gonoreji.jpg' %}'" text="'Izcedek pri gonoreji'">Kako izgleda izcedek pri gonoreji?</lightbox-img>
 
 ####Kaj lahko naredim, če me skrbi, da sem se okužil/a? 
 Ob pojavu simptomov in znakov okužbe, ali če je prisotno kakršnokoli tveganje za okužbo, poišči pomoč pri izbranem osebnem zdravniku, ki te bo napotil k ustreznemu specialistu.

@@ -6,6 +6,6 @@
         var that = this;
 		
 		$scope.file = !$routeParams.view ? "" : $routeParams.view;
-		$scope.urlFile = 'app/pages/symptoms/' + $scope.file + '.md';
+		$scope.urlFile = 'ASPO_new/md/symptoms/' + $scope.file + '.md';
 	}]);
 })();

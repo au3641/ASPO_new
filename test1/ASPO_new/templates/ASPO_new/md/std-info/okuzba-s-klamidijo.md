@@ -1,3 +1,4 @@
+{% load static %}
 ###Okužba s klamidijo
 ####Kaj je to?
 Okužba s klamidijo (*Chlamydia trachomatis*) je najpogostejša bakterijska spolno prenosljiva okužba (SPO) na svetu, ki prizadene predvsem mlade. V razvitem svetu povzroča vnetje rodil in sečil, lahko pa tudi okužbe novorojenca in nekatere druge bolezni. Pri moških najpogosteje povzroča vnetje sečnice, obmodka ali zadnjika, pri ženskah pa vnetje materničnega vratu in sečnice. Je najpogostejši razlog za neplodnost žensk.
@@ -10,7 +11,7 @@ Klamidije se prenašajo z nezaščitenim spolnim stikom z okuženo osebo. Najpom
 ####Kakšni so simptomi in znaki?
 Okužba najpogosteje poteka brez bolezenskih simptomov in znakov, kar se zgodi pri 90% žensk in 50% moških. Če so izraženi, se bolezenski simptomi in znaki ponavadi pojavijo od enega do treh tednov po okužbi. Klamidija je najpogostejši povzročitelj negonokoknega vnetja sečnice pri moških in negonokoknega vnetja materničnega vratu oziroma sečnice pri ženskah, ki se kažeta kot prozoren, lahko rahlo vlecljiv ali belkast izcedek iz spolovila, lahko s pridruženimi pekočimi bolečinami med uriniranjem in pogostim uriniranjem majhnih količin seča. Lahko se pojavi tudi vročina, bolečine v spodnjem delu trebuha in bolečine med spolnim odnosom. Razširitev okužbe pri moških se lahko kaže kot bolečina in otekanje skrotuma. Pri analnih odnosih se okužba kaže kot vlecljiv, prozoren izcedek iz zadnjika. 
 
-<lightbox-img img="'./media/izcedek-klamidija.jpg'" text="'Izcedek pri klamidijski okužbi. Levo žensko spolovilo, desno moško.'">Kako izgleda izcedek pri okužbi s klamidijo?</lightbox-img>
+<lightbox-img img="'{% static 'ASPO_new/image/izcedek-klamidija.jpg' %}'" text="'Izcedek pri klamidijski okužbi. Levo žensko spolovilo, desno moško.'">Kako izgleda izcedek pri okužbi s klamidijo?</lightbox-img>
 
 ####Kaj lahko naredim, če me skrbi, da sem se okužil/a? 
 Ob pojavu simptomov in znakov okužbe ali če je prisotno kakršnikoli tveganje za okužbo, poišči pomoč pri izbranem osebnem zdravniku, ki te bo napotil k ustreznemu specialistu. 

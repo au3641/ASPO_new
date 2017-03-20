@@ -1,3 +1,5 @@
+{% load static %}
+
 <div id="page-std-info">
     <h2 class="container">Primeri</h2>
 
@@ -12,8 +14,8 @@
                         <span class="icon-bar"></span>
                     </div>
                     <div class="list-group">
-                        <a ng-repeat="link in pages" href="#/primeri/{{ link.link }}" class="list-group-item {{ file == link.link ? 'active' : ''}}">
-                            {{ link.name }} 
+                        <a ng-repeat="link in pages" href="#/primeri/{% templatetag openvariable %} link.link {% templatetag closevariable %}" class="list-group-item {% templatetag openvariable %} file == link.link ? 'active' : ''{% templatetag closevariable %}">
+                            {% templatetag openvariable %} link.name {% templatetag closevariable %}
                         </a>
 
                     </div>
