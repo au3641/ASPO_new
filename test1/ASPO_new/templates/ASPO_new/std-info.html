@@ -12,8 +12,8 @@
                         <span class="icon-bar"></span>
                     </div>
                     <div class="list-group">
-                        <a ng-repeat="link in pages" href="#/o-spolno-prenosljivih-okuzbah/{{ link.link }}" class="list-group-item {{ file == link.link ? 'active' : ''}}">
-                            {{ link.name }} 
+                        <a ng-repeat="link in pages" href="#/o-spolno-prenosljivih-okuzbah/{% templatetag openvariable %} link.link {% templatetag closevariable %}" class="list-group-item {% templatetag openvariable %} file == link.link ? 'active' : ''{% templatetag closevariable %}">
+                            {% templatetag openvariable %} link.name {% templatetag closevariable %}
                         </a>
 
                     </div>
@@ -26,7 +26,7 @@
                         </div>
 						
 						<div ng-switch-when="">
-                            <div marked ng-include="'app/pages/std-info/generalSTD.md'">
+                            <div marked ng-include="'ASPO_new/md/std-info/generalSTD.md'">
 						</div>
                     </div>
                 </div>

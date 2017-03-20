@@ -1,3 +1,4 @@
+{% load static %}
 ###Genitalni herpes
 ####Kaj je to?
 Genitalni herpes je druga najpogostejša spolno prenosljiva okužba (SPO). Povzročata jo virusa herpes simpleksa, najpogosteje tisti tipa 2 (HSV-2), lahko pa tudi tipa 1 (HSV-1), ki ga poznamo kot povzročitelja herpesa na ustnici.
@@ -10,8 +11,8 @@ Okužba se prenaša pri neposrednem stiku z virusom, ki se izloča skozi kožo a
 ####Kakšni so simptomi in znaki?
 Na mestu vstopa virusa v telo se po približno enem tednu pojavi rdečina, na kateri se razvijejo mehurčki, napolnjeni z bistro, vodeno tekočino. Mehurčki počijo in za seboj pustijo zelo bolečo razjedo, ki se zaceli in v tednu ali dveh prekrije s krasto. Pri večini žensk so pridruženi še drugi simptomi, kot so bolečine, skelenje in srbenje v predelu spolovila ter izcedek iz nožnice. Tudi pri moških so mehurčkom lahko pridruženi še drugi simptomi in znaki, vključno z vlecljivim izcedkom iz sečnice. Pri prvem srečanju z virusom lahko pride tudi do splošnih znakov okužbe, kot so splošno slabo počutje, vročina in povečane bezgavke. Petina okuženih nikoli nima nobenih znakov značilnih za herpes, lahko pa nemo prenaša okužbo na spolnega partnerja/partnerko.   
    
-<lightbox-img img="'./media/herpes-mehurcek.jpg'" text="'Primer mehurčka pri genitalnem herpesu'">Kako izgledajo mehurčki pri genitalnem herpesu?</lightbox-img>     
-<lightbox-img img="'./media/herpes-razjeda.jpg'" text="'Primer razjede pri genitalnem herpesu'">Kako izgledajo razjede pri genitalnem herpesu?</lightbox-img>
+<lightbox-img img="'{% static 'ASPO_new/image/herpes-mehurcek.jpg' %}'" text="'Primer mehurčka pri genitalnem herpesu'">Kako izgledajo mehurčki pri genitalnem herpesu?</lightbox-img>
+<lightbox-img img="'{% static 'ASPO_new/image/herpes-razjeda.jpg' %}'" text="'Primer razjede pri genitalnem herpesu'">Kako izgledajo razjede pri genitalnem herpesu?</lightbox-img>
 
 ####Kaj lahko naredim, če me skrbi, da sem se okužil/a? 
 Ob pojavu simptomov in znakov okužbe ali če je prisotno kakršnokoli tveganje za okužbo, poišči pomoč pri izbranem osebnem zdravniku, ki te bo napotil k ustreznemu specialistu.

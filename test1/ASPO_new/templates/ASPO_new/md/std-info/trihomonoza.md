@@ -1,3 +1,4 @@
+{% load static %}
 ###Trihomonoza
 ####Kaj je to?
 Trihomonoza ali trihomoniaza je vnetje sečnice ali nožnice, ki ga povzroča okužba s praživaljo *Trichomonas vaginalis*. Je najpogostejša nevirusna SPO.
@@ -10,7 +11,7 @@ Okužba največkrat ostane neopažena, saj pogosto poteka brez bolezenskih simpt
 Pri moških so znaki okužbe manj izraziti. Lahko se pojavi pekoč občutek pri uriniranju in prehoden penast, včasih gnojen izcedek iz sečnice. Vlažnost ob vhodu v sečnico in blago draženje se navadno pojavita v zgodnjih jutranjih urah.
 Trihomonas se prenaša tudi ob spolnem stiku z okuženo osebo brez kakršnihkoli bolezenskih znakov.
 
-<lightbox-img img="'./media/izcedek-trihomonoza.jpg'" text="'Izcedek pri trihomonozi'">Kako izgleda izcedek pri trihomonozi?</lightbox-img>
+<lightbox-img img="'{% static 'ASPO_new/image/izcedek-trihomonoza.jpg' %}'" text="'Izcedek pri trihomonozi'">Kako izgleda izcedek pri trihomonozi?</lightbox-img>
 
 ####Kaj lahko naredim, če me skrbi, da sem se okužil/a?
 Ob pojavu simptomov in znakov okužbe ali če je prisoten dejavnik tveganja za okužbo, poišči pomoč pri izbranem osebnem zdravniku, ki te bo napotil k ustreznemu specialistu.
