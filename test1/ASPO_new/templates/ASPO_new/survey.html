@@ -8,17 +8,17 @@
 				<carousel interval="-1" id="survey-questions" ng-show="diagnosis == -1" class="carousel-fade">
 					<slide ng-repeat="q in displayedQuestions" active="q.active" class="question-page">
 						<h3 class="survey-question">
-							{{displayNr+1}}. {{q.text}}
+							{% templatetag openvariable %}displayNr+1{% templatetag closevariable %}. {% templatetag openvariable %}q.text{% templatetag closevariable %}
 							<div ng-if="q.type == 2" class="question-info">Možnih je več odgovorov.</div>
 						</h3>
 						
 
 						<ul id="ulSurvey" ng-switch on="q.type">
 							<li ng-repeat="ans in q.answers" ng-switch-when="2">
-								<label><input name="ans{{q.id}}" type="checkbox" ng-model="ans.selected" ng-value="true"> {{ ans.answerText }}</label>
+								<label><input name="ans{% templatetag openvariable %}q.id{% templatetag closevariable %}" type="checkbox" ng-model="ans.selected" ng-value="true"> {% templatetag openvariable %} ans.answerText {% templatetag closevariable %}</label>
 							</li>
 							<li ng-repeat="ans in q.answers" ng-switch-when="1">
-								<label><input name="ans{{q.id}}" type="radio" ng-change="change()" ng-model="q.answerNr" ng-value="ans.answerID"> {{ ans.answerText }}</label>
+								<label><input name="ans{% templatetag openvariable %}q.id{% templatetag closevariable %}" type="radio" ng-change="change()" ng-model="q.answerNr" ng-value="ans.answerID"> {% templatetag openvariable %} ans.answerText {% templatetag closevariable %}</label>
 							</li>
 						</ul>
 
