@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'ASPO_new',
+    'ASPO_new.apps.AspoNewConfig',
 ]
 
 MIDDLEWARE = [
