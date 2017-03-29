@@ -1,6 +1,8 @@
 from django.db import models
 
 # Create your models here.
+
+"""
 class Testis(models.Model):
     velikost = models.IntegerField(default=0)
 
@@ -19,3 +21,4 @@ class Question_answers(models.Model):
 
 class depend(models.Model):
     answer_id = models.ForeignKey(Question_answers, on_delete=models.CASCADE)
+"""
