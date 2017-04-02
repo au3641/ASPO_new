@@ -23,3 +23,14 @@ def any(request):
     # alternative method is just do string split (meh)
     subUrl = re.sub( r'^([^/]*/[^/]*)/', "", str(request.path))
     return render(request, subUrl)
+
+
+# REST FROM HERE ON OUT
+
+from .models import Questions
+from .serializers import QuestionSerializer
+from rest_framework import viewsets
+
+class QuestionViewSet(viewsets.ModelViewSet):
+    queryset = Questions.objects.using('aspo_db').all()
+    serializer_class = QuestionSerializer

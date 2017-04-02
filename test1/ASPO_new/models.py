@@ -29,7 +29,7 @@ class QuestionAnswers(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'question_answers'
+        db_table = 'questionAnswers'
 
 
 class Questions(models.Model):
@@ -51,4 +51,4 @@ class UserAnswers(models.Model):
 
     class Meta:
         managed = False
-        db_table = 'user_answers'
+        db_table = 'userAnswers'
