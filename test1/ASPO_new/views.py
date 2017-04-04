@@ -27,10 +27,12 @@ def any(request):
 
 # REST FROM HERE ON OUT
 
-from .models import Questions
+"""
+from .models import QuestionsOld
 from .serializers import QuestionSerializer
 from rest_framework import viewsets
 
 class QuestionViewSet(viewsets.ModelViewSet):
-    queryset = Questions.objects.using('aspo_db').all()
+    queryset = QuestionsOld.objects.using('aspo_db').all()
     serializer_class = QuestionSerializer
+"""
