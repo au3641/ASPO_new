@@ -59,6 +59,7 @@ class Question(models.Model):
     text = models.TextField(blank=True, null=True)
     questionType = models.TextField(blank=True, null=True)
     idGroup = models.IntegerField(blank=True, null=True)
+    disabled_by = models.ManyToManyField("Answer", related_name="disables_questions", null=True)
 
 
 class Answer(models.Model):
