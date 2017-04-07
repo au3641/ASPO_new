@@ -21,6 +21,8 @@ class Question(models.Model):
 class Answer(models.Model):
     question = models.ForeignKey(Question)
     text = models.TextField(blank=True, null=True)
+    type = models.TextField()
+    order = models.IntegerField(blank=True, null=True)
 
 
 class Disable(models.Model):
