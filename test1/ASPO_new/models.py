@@ -59,20 +59,21 @@ class Question(models.Model):
     text = models.TextField(blank=True, null=True)
     questionType = models.TextField(blank=True, null=True)
     idGroup = models.IntegerField(blank=True, null=True)
-    disabled_by = models.ManyToManyField("Answer", related_name="disables_questions", null=True)
 
 
 class Answer(models.Model):
-    idAnswer = models.IntegerField(primary_key=True)
+    question = models.ForeignKey(Question)
     text = models.TextField(blank=True, null=True)
-    answerColor = models.TextField(blank=True, null=True)
-    idQuestion = models.ForeignKey(Question, on_delete=models.PROTECT)
-
+    #idAnswer = models.IntegerField(primary_key=True)
+    #answerColor = models.TextField(blank=True, null=True)
+    #idQuestion = models.ForeignKey(Question, on_delete=models.PROTECT)
 
 class Disable(models.Model):
-    idDisable = models.IntegerField(primary_key=True)
-    idOfQuestionToDisable = models.IntegerField(blank=True, null=True)
-    idAnswer = models.ForeignKey(Answer, on_delete=models.PROTECT)
+    #idDisable = models.IntegerField(primary_key=True)
+    #idOfQuestionToDisable = models.IntegerField(blank=True, null=True)
+    #idAnswer = models.ForeignKey(Answer, on_delete=models.PROTECT)
+    question = models.ForeignKey(Question)
+    required_answers = models.ManyToManyField(Answer)
 
 
 class User(models.Model):
