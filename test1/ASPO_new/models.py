@@ -9,6 +9,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 class Questionnaire(models.Model):
+    name = models.TextField(unique=True)
     introText = models.TextField(blank=True, null=True)
 
 

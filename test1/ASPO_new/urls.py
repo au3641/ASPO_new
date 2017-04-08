@@ -8,8 +8,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-#router = routers.DefaultRouter()
-#router.register(r'questions', views.QuestionViewSet)
+router = routers.DefaultRouter()
+router.register(r'questionnaireASPO', views.QuestionnaireASPO)
+router.register(r'questionsASPO', views.QuestionSetASPO) # get every question from ASPO questionnaire
+router.register(r'answersASPO', views.AnswerSetForASPO)
+router.register(r'disablesASPO', views.DisableForASPO)
+router.register(r'answerWeightsASPO', views.AnswerWeightForASPO)
 
 urlpatterns = [
     # API
@@ -17,8 +21,13 @@ urlpatterns = [
     # url(r'home', views.home, name='home'),
     # url(r'menu', views.menu, name='menu'),
     # url(r'footer', views.footer, name='footer'),
- #   url(r'^', include(router.urls)),
+
+    # REST rotuer urls
+    url(r'^', include(router.urls)),
+
+    # REST views
     url(r'^api', include('rest_framework.urls', namespace='rest_framework')),
 
+    # View for static pages
     url(r'.*', views.any, name='any'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
