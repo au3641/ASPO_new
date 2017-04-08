@@ -57,7 +57,7 @@ class Disable(models.Model):
     def  __str__( self ):
         return "{0} {1}".format(
             self.question,
-            ", ".join(requiredAnswers)
+            ", ".join(self.requiredAnswers.all())
         )
     question = models.ForeignKey(Question)
     requiredAnswers = models.ManyToManyField(Answer)
