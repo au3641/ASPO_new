@@ -1,32 +1,32 @@
 from .models import *
 from rest_framework import serializers
 
-class QuestionnaireSerializer(serializers.HyperlinkedModelSerializer):
+class QuestionnaireSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questionnaire
-        fields = ('name', 'introText')
+        fields = ('pk', 'name', 'introText')
 
-class QuestionSerializer(serializers.HyperlinkedModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = ('questionnaire', 'text', 'idGroup')
+        fields = ('pk', 'questionnaire', 'text', 'order', 'type')
 
-class AnswerSerializer(serializers.HyperlinkedModelSerializer):
+class AnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ('question', 'text', 'type', 'order')
+        fields = ('pk', 'question', 'text', 'order')
 
-class DisableSerializer(serializers.HyperlinkedModelSerializer):
+class DisableSerializer(serializers.ModelSerializer):
     class Meta:
         model = Disable
-        fields = ('question', 'requiredAnswers')
+        fields = ('pk', 'question', 'requiredAnswers')
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('answeredWith')
+        fields = ('pk', 'answeredWith')
 
-class AnswerWeightSerializer(serializers.HyperlinkedModelSerializer):
+class AnswerWeightSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Answer
-        fields = ('answer', 'type', 'value')
+        model = AnswerWeight
+        fields = ('pk', 'answer', 'type', 'value')
