@@ -23,7 +23,7 @@ urlpatterns = [
     # url(r'footer', views.footer, name='footer'),
 
     # REST rotuer urls
-    url(r'^', include(router.urls)),
+    url(r'^rest/', include(router.urls)),
 
     # REST views
     url(r'^api', include('rest_framework.urls', namespace='rest_framework')),
