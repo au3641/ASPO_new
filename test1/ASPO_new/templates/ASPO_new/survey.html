@@ -5,20 +5,20 @@
         <div class="container"> 
 			<div class="col-md-offset-3 col-md-6">
 						
-				<carousel interval="-1" id="survey-questions" ng-show="weDoneHereBoyz == -1" class="carousel-fade">
+				<carousel interval="-1" id="survey-questions" ng-show="alertLevel == -1" class="carousel-fade">
 					<slide ng-repeat="q in questions" active="q.active" class="question-page">
 						<h3 class="survey-question">
-							{% templatetag openvariable %}displayNr+1{% templatetag closevariable %}. {% templatetag openvariable %}q.text{% templatetag closevariable %}
+							{% templatetag openvariable %}actualDisplayNumber{% templatetag closevariable %}. {% templatetag openvariable %}q.text{% templatetag closevariable %}
 							<div ng-if="q.type == 'checkbox'" class="question-info">Možnih je več odgovorov.</div>
 						</h3>
 						
 
 						<ul id="ulSurvey" ng-switch on="q.type">
 							<li ng-repeat="ans in q.answers" ng-switch-when="checkbox">
-								<label><input name="ans{% templatetag openvariable %}q.pk{% templatetag closevariable %}" type="checkbox" ng-model="ans.selected" ng-value="true"> {% templatetag openvariable %} ans.text {% templatetag closevariable %}</label>
+								<label><input name="ans{% templatetag openvariable %}q.pk{% templatetag closevariable %}" type="checkbox" ng-change="changeCheckbox()" ng-model="ans.selected"> {% templatetag openvariable %} ans.text {% templatetag closevariable %}</label>
 							</li>
 							<li ng-repeat="ans in q.answers" ng-switch-when="radio">
-								<label><input name="ans{% templatetag openvariable %}q.pk{% templatetag closevariable %}" type="radio" ng-change="change()" ng-model="ans.selected" ng-value="true"> {% templatetag openvariable %} ans.text {% templatetag closevariable %}</label>
+								<label><input name="ans{% templatetag openvariable %}q.pk{% templatetag closevariable %}" type="radio" ng-change="change(ans.pk)" ng-model="ans.selected" ng-value="true"> {% templatetag openvariable %} ans.text {% templatetag closevariable %}</label>
 							</li>
 						</ul>
 
@@ -29,8 +29,8 @@
 					</slide>
 				</carousel>
 
-				<div ng-show="weDoneHereBoyz >= 0" class="alert" ng-class="weDoneHereBoyz == 1 ? 'alert-success' : weDoneHereBoyz == 2 ? 'alert-warning' : 'alert-danger'">
-					<span ng-switch on="weDoneHereBoyz">
+				<div ng-show="alertLevel >= 0" class="alert" ng-class="alertLevel == 1 ? 'alert-success' : alertLevel == 2 ? 'alert-warning' : 'alert-danger'">
+					<span ng-switch on="alertLevel">
 						<span ng-switch-when="1">
 							Verjetnost, da imate spolno prenosljivo okužbo, je zelo majhna. Če ste zaskrbljeni, pojdite k izbranemu osebnemu zdravniku. Izogibajte se tveganim spolnim odnosom ter pravilno in dosledno uporabljajte kondom.
 						</span>

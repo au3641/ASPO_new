@@ -5,8 +5,9 @@
 
 
 		$scope.displayNr = -1; // Index of current questions in carousel
-		$scope.weDoneHereBoyz = -1;
-		$scope.moveOn = true;
+		$scope.actualDisplayNumber = 1;
+		$scope.alertLevel = -1;
+		$scope.moveOn = false;
 
 		// Go through conditions if question display conditions
 		// were satisfied.
@@ -50,8 +51,17 @@
 			return question.dependencies.length <= matchedDependecies;
 		}*/
 
-		$scope.change = function(){
-			return;
+		$scope.change = function(pk){
+			$scope.moveOn = true;
+
+			// When radio button selection changes, reset selected variable of other answers in the question
+			for(var i = 0; i < $scope.questions[$scope.displayNr].answers.length; i++)
+			{
+                if (pk == $scope.questions[$scope.displayNr].answers[i].pk)
+                    $scope.questions[$scope.displayNr].answers[i].selected = true;
+                else
+                    $scope.questions[$scope.displayNr].answers[i].selected = false;
+            }
 		};
 
 		$scope.back = function() 
@@ -59,22 +69,73 @@
 			$scope.questions[$scope.displayNr].active = false;
 
 			if($scope.displayNr > 0)
-				$scope.displayNr--;
+			{
+				do
+				{
+					if($scope.questions[$scope.displayNr].ninja)
+						$scope.questions[$scope.displayNr].ninja = false;
+					$scope.displayNr--;
+				}while($scope.questions[$scope.displayNr].ninja);
+				$scope.actualDisplayNumber--;
+            }
 
 			$scope.questions[$scope.displayNr].active = true;
+			$scope.moveOn = true;
 		};
 
 		function end()
 		{
+			var green = 0;
+			var yellow = 0;
+			var red = 0;
+			var pinky = 0;
+			var alertlevel = 1;
+
+			$scope.questions.forEach(function(question)
+			{
+				question.answers.forEach(function(answer)
+				{
+					if(answer.selected)
+					{
+						if(answer.weight.type == "semafor")
+						{
+							switch (answer.weight.value)
+							{
+								case 1: green++; break;
+								case 2: yellow++; break;
+								case 3: red++; break;
+								case 4: pinky++; break;
+							}
+						}
+					}
+				});
+			});
+
+			if(yellow < 4 && pinky == 0 && red == 0)
+				alertlevel = 1; // green
+			else if((yellow >= 4 || (pinky > 0 && pinky < 3)) && red == 0)
+				alertlevel = 2; // yellow
+			else
+				alertlevel = 3; // red
+
+			$scope.alertLevel = alertlevel;
+			/*
+			ZELENA, vsi odgovori zeleni, ali do vključno trije rumeni
+			RUMENA, če so zeleni in vsaj štirje rumeni; če sta 1 ali 2 roza in ostali zeleni/rumeni
+			RDEČA, vsaj 1 rdeč; ali če 3 roza
+			 */
+
+			// TODO save results into database
+
 			return;
 			/*
-			that.answered.shift();		
+			that.answered.shift();
 			aspoService.sendData(that.answered);
-			
+
 			var colors = new Array(32);
 			for(var i = 0; i < colors.length; i++)
 				colors[i] = 0;
-			
+
 			// Count answer colours user provided.
 			for(var i = 0; i < $scope.displayedQuestions.length; i++) {
 				var q = $scope.displayedQuestions[i];
@@ -82,21 +143,21 @@
 				// By current design checkboxes can be ignored
 				if(q.type == 2)
 					continue;
-				
+
 				for(var j = 0; j < q.answers.length; j++)
-				{			
+				{
 					if(q.answers[j].answerID != q.answerNr)
 						continue;
-					
+
 					var bin = (q.answers[j].flag >>> 0).toString(2);
-					
+
 					for(var k = 0; k < bin.length; k++)
 						colors[colors.length-k-1] += 1*bin[bin.length-k-1]; // 1* lazy cast from char to int
-					
+
 					break;
 				}
 			}*/
-			
+
 			// BIG ENDIAN Sorting, starts from behind
 			// 0 = no colour 	index: last (colors.length-1)
 			// 1 = green		index: last-1
@@ -129,46 +190,91 @@
 		{
 			$scope.questions[$scope.displayNr].active = false;
 
-			if($scope.displayNr < $scope.questions.length)
-				$scope.displayNr++;
-			else
-				end();
+			var skip;
+
+			do
+			{
+				skip = false;
+				if($scope.displayNr < $scope.questions.length - 1)
+					$scope.displayNr++;
+				else
+					end();
+
+				// Check answer if disabled
+				for(var i = 0; i < $scope.questions[$scope.displayNr].disables.length && !skip; i++)
+				{
+					for(var j = 0; j < $scope.questions[$scope.displayNr].disables[i].requiredAnswers.length && !skip; j++)
+					{
+						var relatedQID = $scope.questions[$scope.displayNr].disables[i].relatedQAs[j]; // index of question of required answer
+						for(var k = 0; k < $scope.questions[relatedQID].answers.length; k++)
+						{
+							if($scope.questions[relatedQID].answers[k].pk == $scope.questions[$scope.displayNr].disables[i].requiredAnswers[j])
+							{
+								if($scope.questions[relatedQID].answers[k].selected)
+								{
+									$scope.questions[$scope.displayNr].ninja = true;
+                                    skip = true;
+                                    break;
+                                }
+							}
+						}
+					}
+				}
+			}while(skip);
 
 			$scope.questions[$scope.displayNr].active = true;
+			$scope.moveOn = false;
+
+			for(var i = 0; i < $scope.questions[$scope.displayNr].answers.length; i++)
+			{
+				if($scope.questions[$scope.displayNr].answers[i].selected == true || $scope.questions[$scope.displayNr].type == "checkbox")
+				{
+                    $scope.moveOn = true;
+                    break;
+                }
+			}
+			$scope.actualDisplayNumber++;
 		};
 
 		// Call service to get all questions
 		aspoService.getQuestions().then(function (questions)
 		{
-			// Add property to indicate which one is showed
-			// Required for Bootstrap UI Carousel
 			for(var i = 0; i < questions.length; i++)
 			{
-				questions[i].active = false;
-				questions[i].answers = [];
+				// Add property 'active' to indicate which question is displayed
+				questions[i].active = false;// Required for Bootstrap UI Carousel
+				questions[i].answers = [];	// array filled by getAnswers
+				questions[i].disables = []; // array filled by getDisables
+				questions[i].ninja = false; // ninja == disabled == hidden (ninja is not reserved in JS ^^)
+				// if question is ninja, then do not send it's answer in a result
 			}
-			
-			// Mark first one as active and save all
-			// questions in controller property variable.
-			questions[0].active = true;
-			$scope.displayNr = 0;
+
+			$scope.displayNr = 0; // Tells us which question is active
 			$scope.questions = questions;
+
 
 			$scope.questions.sort(function (a, b)
 			{
 				return a.sequence - b.sequence;
 			});
+
+			// Mark first one as active
+			$scope.questions[0].active = true;
 		});
 
+		// Call service to get all answers
 		aspoService.getAnswers().then(function (answers)
 		{
 			for(var i = 0; i < answers.length; i++)
 			{
 				answers[i].selected = false;
+				answers[i].weight = -1;
+
 				for(var j = 0; j < $scope.questions.length; j++)
 				{
+					// Add answers to the correspoinding questions
 					if($scope.questions[j].pk == answers[i].question)
-						$scope.questions[j].answers.push(answers[i]);
+                        $scope.questions[j].answers.push(answers[i]);
 				}
 			}
 
@@ -179,9 +285,60 @@
 					return a.order - b.order;
 				});
 			}
+		});
 
-			// Find and display first questions
-			//$scope.next();
+		// Call service to get all disables
+		aspoService.getDisables().then(function (disables)
+		{
+			for(var i = 0; i < disables.length; i++)
+			{
+				// Sort requiredAnswers in ascending order
+				disables[i].requiredAnswers.sort(function (a, b)
+				{
+					return a.requiredAnswers - b.requiredAnswers;
+				});
+
+				// Array of question IDs (array index)
+				// It tells us on which question each requiredAnswers is attached to (for faster runtime look-up)
+				disables[i].relatedQAs = [];
+
+				// Find corresponding question IDs
+				for(var j = 0; j < disables[i].requiredAnswers.length; j++)
+				{
+					for(var k = 0; k < $scope.questions.length; k++)
+					{
+						// If answer we seek is in this question
+						for(var l = 0; l < $scope.questions[k].answers.length; l++)
+						{
+                            if ($scope.questions[k].answers[l].pk == disables[i].requiredAnswers[j])
+                                disables[i].relatedQAs.push(k); // Add question id to related
+                        }
+					}
+				}
+
+				// Attach disable object to question this disable object can disable
+				for(var j = 0; j < $scope.questions.length; j++)
+				{
+					// Add disables to the correspoinding questions
+					if($scope.questions[j].pk == disables[i].question)
+						$scope.questions[j].disables.push(disables[i]);
+				}
+            }
+		});
+
+		aspoService.getAnswerWeights().then(function (weights)
+		{
+			for(var i = 0; i < weights.length; i++)
+			{
+				for(var j = 0; j < $scope.questions.length; j++)
+				{
+					for(var k = 0; k < $scope.questions[j].answers.length; k++)
+					{
+						if($scope.questions[j].answers[k].pk == weights[i].answer)
+							$scope.questions[j].answers[k].weight = weights[i];
+					}
+				}
+			}
 		});
 	}]);
 })();
