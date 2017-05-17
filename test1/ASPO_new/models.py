@@ -18,6 +18,10 @@ class Questionnaire(models.Model):
         )
     name = models.TextField(unique=True)
     introText = models.TextField(blank=True, null=True)
+    consentQuestionText = models.TextField(blank=True, null=True)
+    consentAcceptText = models.TextField(blank=True, null=True)
+    consentRefuseText = models.TextField(blank=True, null=True)
+    consentShowOrder = models.IntegerField(blank=True, null=True)
 
 
 class Question(models.Model):
@@ -39,7 +43,6 @@ class Question(models.Model):
         ('time', 'time'),
         ('url', 'url'),
         ('text', 'text'),
-        ('consent', 'consent'),
     )
     questionnaire = models.ForeignKey(Questionnaire)
     text = models.TextField(blank=True, null=True)
