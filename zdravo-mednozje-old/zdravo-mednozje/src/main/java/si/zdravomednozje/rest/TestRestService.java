@@ -108,18 +108,18 @@ public class TestRestService {
 		
 		return  Response.status(201).entity(returnCode).build(); 
 	}
-	
-	 
+
+
 /*	public String toJSONString(List<Question> questions){
 		for (int i = 0; i < questions.size(); i++) {
 			Question question = questions.get(i);
 			JSONresponse += "{\n";
-			
+
 			JSONresponse += "\"id\":\""+ question.getId() +"\",";
 			JSONresponse += "\"sequence\":\""+ question.getSequence() +"\",";
 			JSONresponse += "\"text\":\""+ question.getText() +"\",";
 			JSONresponse += "\"type\":\""+ question.getType() +"\",";
-			
+
 			// Answers
 			JSONresponse += "\"answers\":[" ;
 			for (int j = 0; j < question.getAnswers().size(); j++) {
@@ -127,14 +127,14 @@ public class TestRestService {
 				JSONresponse += "{";
 				JSONresponse += "\"answerID\":\""+ answer.getAnswerID() +"\",";
 				JSONresponse += "\"text\":\""+ answer.getAnswerText() +"\"";
-				
+
 				JSONresponse += "}";
 				if(j < question.getAnswers().size()-1){
 					JSONresponse += ",";
 				}
 			}
 			JSONresponse += "],";
-			
+
 			// Dependencies
 			JSONresponse += "\"dependencies\":[" ;
 			for(int k = 0; k < question.getDependencies().size(); k++){
@@ -142,14 +142,14 @@ public class TestRestService {
 				JSONresponse += "{";
 				JSONresponse += "\"previusQuestionID\":\""+ dependency.getPreviusQuestionID() +"\",";
 				JSONresponse += "\"answerID\":\""+ dependency.getAnswerID() +"\"";
-				
+
 				JSONresponse += "}";
 				if(k < question.getDependencies().size()-1){
 					JSONresponse += ",";
 				}
 			}
 			JSONresponse += "]";
-			
+
 			JSONresponse += "}";
 			if (i < questions.size()-1) {
 				JSONresponse += ",\n";
