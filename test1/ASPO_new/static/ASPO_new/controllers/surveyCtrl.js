@@ -7,6 +7,7 @@
 		$scope.actualDisplayNumber = 1;
 		$scope.alertLevel = -1;
 		$scope.moveOn = false;
+		$scope.userConsent = false;
 
 		// Go through conditions if question display conditions
 		// were satisfied.
@@ -93,7 +94,7 @@
 			$scope.questions.forEach(function(question)
 			{
 				question.answers.forEach(function(answer)
-				{
+                {
 					if(answer.selected)
 					{
 						if(answer.weight.type == "semafor")
@@ -123,6 +124,13 @@
 			RUMENA, če so zeleni in vsaj štirje rumeni; če sta 1 ali 2 roza in ostali zeleni/rumeni
 			RDEČA, vsaj 1 rdeč; ali če 3 roza
 			 */
+
+			for(var i = 0; i < $scope.consentQuestion.answers.length; i++)
+			{
+				if($scope.consentQuestion.answers[i].pk == $scope.consent.consentConfirmPK)
+					if($scope.consentQuestion.answers[i].selected)
+						$scope.userConsent = true;
+			}
 
 			// TODO save results into database
 
@@ -235,6 +243,11 @@
 			$scope.actualDisplayNumber++;
 		};
 
+		aspoService.getQuestionnaire().then(function (questionnaire)
+        {
+            $scope.questionnaire = questionnaire;
+        });
+
 		// Call service to get all questions
 		aspoService.getQuestions().then(function (questions)
 		{
@@ -246,13 +259,36 @@
 				questions[i].disables = []; // array filled by getDisables
 				questions[i].ninja = false; // ninja == disabled == hidden (ninja is not reserved in JS ^^)
 				// if question is ninja, then do not send it's answer in a result
-
-				//if(questions[])
 			}
 
 			$scope.displayNr = 0; // Tells us which question is active
-			$scope.questions = questions;
+            $scope.questions = [];
 
+            // Only keep questions from selected questionnaire (select questionnaire in *service.js
+            for(var i = 0; i < questions.length; i++)
+            {
+                if(questions[i].questionnaire == $scope.questionnaire.pk)
+                    $scope.questions.push(questions[i]);
+            }
+
+            // Create consent question on scope for quick access later
+            $scope.consentQuestion.pk = -1;
+            $scope.consentQuestion.questionnaire = $scope.questionnaire.pk;
+            $scope.consentQuestion.text = $scope.questionnaire.consentQuestionText;
+            $scope.consentQuestion.order = $scope.questionnaire.consentShowOrder;
+            $scope.consentQuestion.type = "radio";
+            $scope.consentQuestion.active = false;
+            $scope.consentQuestion.answers = [];
+            $scope.consentQuestion.disables = [];
+            $scope.consentQuestion.ninja = false;
+
+            // -1 private key is accept, -2 is refuse
+            $scope.consentQuestion.answers.push({pk: -1, question: -1, text: $scope.questionnaire.consentAcceptText, order: 1});
+            $scope.consentQuestion.answers.push({pk: -2, question: -1, text: $scope.questionnaire.consentRefuseText, order: 2});
+            $scope.consentQuestion.consentConfirmPK = -1;
+
+            // Add consent question to question set, just before ordering
+            $scope.questions.push($scope.consentQuestion);
 
 			$scope.questions.sort(function (a, b)
 			{
