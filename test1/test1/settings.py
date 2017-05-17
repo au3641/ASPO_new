@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     #'ASPO_new.apps.AspoNewConfig',
     'ASPO_new',
     'rest_framework',
-    'django_extensions'
+    'django_extensions',
+    'nested_inline'
 ]
 
 MIDDLEWARE = [
