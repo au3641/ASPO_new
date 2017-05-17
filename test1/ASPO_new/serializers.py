@@ -4,7 +4,7 @@ from rest_framework import serializers
 class QuestionnaireSerializer(serializers.ModelSerializer):
     class Meta:
         model = Questionnaire
-        fields = ('pk', 'name', 'introText')
+        fields = ('pk', 'name', 'introText', 'consentQuestionText', 'consentAcceptText', 'consentRefuseText', 'consentShowOrder')
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
