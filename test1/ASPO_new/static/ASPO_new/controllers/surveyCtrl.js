@@ -3,7 +3,6 @@
 
     angular.module("ASPO").controller('SurveyCtrl', ["$scope", "AspoService", function ($scope, aspoService) {
 
-
 		$scope.displayNr = -1; // Index of current questions in carousel
 		$scope.actualDisplayNumber = 1;
 		$scope.alertLevel = -1;
@@ -255,7 +254,7 @@
 
 			$scope.questions.sort(function (a, b)
 			{
-				return a.sequence - b.sequence;
+				return a.order - b.order;
 			});
 
 			// Mark first one as active
