@@ -39,6 +39,7 @@ class Question(models.Model):
         ('time', 'time'),
         ('url', 'url'),
         ('text', 'text'),
+        ('consent', 'consent'),
     )
     questionnaire = models.ForeignKey(Questionnaire)
     text = models.TextField(blank=True, null=True)
@@ -60,6 +61,16 @@ class Answer(models.Model):
     question = models.ForeignKey(Question)
     text = models.TextField(blank=True, null=True)
     order = models.IntegerField(blank=True, null=True)
+
+
+class Comment(models.Model):
+    def __str__(self):
+        return "QUESTION: {0} | TEXT: {1}".format(
+            self.question.text,
+            self.text,
+        )
+    question = models.ForeignKey(Question)
+    text = models.TextField(blank=True, null=True)
 
 
 class Disable(models.Model):
