@@ -48,8 +48,8 @@
 
 	    // Return API
 	    return ({
-	        getQuestions: getQuestions,
 			getQuestionnaire: getQuestionnaire,
+	        getQuestions: getQuestions,
 			getAnswers: getAnswers,
 			getDisables: getDisables,
 			getAnswerWeights: getAnswerWeights,

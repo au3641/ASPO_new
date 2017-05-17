@@ -95,7 +95,7 @@
 			{
 				question.answers.forEach(function(answer)
                 {
-					if(answer.selected)
+					if(answer.selected && answer.weight.length != 0)
 					{
 						if(answer.weight.type == "semafor")
 						{
@@ -245,7 +245,7 @@
 
 		aspoService.getQuestionnaire().then(function (questionnaire)
         {
-            $scope.questionnaire = questionnaire;
+            $scope.questionnaire = questionnaire[0];
         });
 
 		// Call service to get all questions
@@ -262,7 +262,7 @@
 			}
 
 			$scope.displayNr = 0; // Tells us which question is active
-            $scope.questions = [];
+            $scope.questions = new Array();
 
             // Only keep questions from selected questionnaire (select questionnaire in *service.js
             for(var i = 0; i < questions.length; i++)
@@ -272,6 +272,7 @@
             }
 
             // Create consent question on scope for quick access later
+			$scope.consentQuestion = {};
             $scope.consentQuestion.pk = -1;
             $scope.consentQuestion.questionnaire = $scope.questionnaire.pk;
             $scope.consentQuestion.text = $scope.questionnaire.consentQuestionText;
@@ -283,8 +284,8 @@
             $scope.consentQuestion.ninja = false;
 
             // -1 private key is accept, -2 is refuse
-            $scope.consentQuestion.answers.push({pk: -1, question: -1, text: $scope.questionnaire.consentAcceptText, order: 1});
-            $scope.consentQuestion.answers.push({pk: -2, question: -1, text: $scope.questionnaire.consentRefuseText, order: 2});
+            $scope.consentQuestion.answers.push({pk: -1, question: -1, text: $scope.questionnaire.consentAcceptText, order: 1, weight: []});
+            $scope.consentQuestion.answers.push({pk: -2, question: -1, text: $scope.questionnaire.consentRefuseText, order: 2, weight: []});
             $scope.consentQuestion.consentConfirmPK = -1;
 
             // Add consent question to question set, just before ordering
