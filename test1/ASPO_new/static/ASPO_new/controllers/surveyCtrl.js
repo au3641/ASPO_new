@@ -246,6 +246,8 @@
 				questions[i].disables = []; // array filled by getDisables
 				questions[i].ninja = false; // ninja == disabled == hidden (ninja is not reserved in JS ^^)
 				// if question is ninja, then do not send it's answer in a result
+
+				//if(questions[])
 			}
 
 			$scope.displayNr = 0; // Tells us which question is active
