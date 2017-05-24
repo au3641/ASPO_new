@@ -63,7 +63,7 @@ class SendAnswersASPO(viewsets.ModelViewSet):
         if serializer.is_valid():
             ans.add_useranswers(serializer.data['answeredWith'])
             ans.save()
-            return Response({"status":"fok yea"})
+            return Response({"status":"success"})
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     #return
