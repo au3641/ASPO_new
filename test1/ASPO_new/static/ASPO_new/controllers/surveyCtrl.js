@@ -90,7 +90,7 @@
 			var red = 0;
 			var pinky = 0;
 			var alertlevel = 1;
-			var pack = new Array();		// list of selected answers
+			var pack = {answeredWith: new Array()};		// list of selected answers
 
 			$scope.questions.forEach(function(question)
 			{
@@ -98,7 +98,7 @@
                 {
                 	// if answers was selected, add it to pack
                 	if(answer.selected && (answer.pk != $scope.consentQuestion.consentConfirmPK ||answer.pk != $scope.consentQuestion.consentRefusePK))
-						pack.push(answer.pk);
+						pack["answeredWith"].push(answer.pk);
 
 					if(answer.selected && answer.weight.length != 0)
 					{

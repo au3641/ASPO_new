@@ -8,8 +8,6 @@
 from __future__ import unicode_literals
 from django.db import models
 
-
-
 class Questionnaire(models.Model):
     def __str__(self):
         return "{0} - {1}".format(
@@ -26,11 +24,18 @@ class Questionnaire(models.Model):
 
 class Question(models.Model):
     def  __str__( self ):
-        return "QUESTIONNAIRE: {0} | QUESTION: {1} | ORDER: {2}".format(
-            self.questionnaire.name,
-            self.text,
-            self.order,
-        )
+        try:
+            return "QUESTIONNAIRE: {0} | QUESTION: {1} | ORDER: {2}".format(
+                self.questionnaire.name,
+                self.text,
+                self.order,
+            )
+        except:
+            return "QUESTIONNAIRE: {0} | QUESTION: {1} | ORDER: {2}".format(
+                "questionnaire does not exist",
+                self.text,
+                self.order,
+            )
 
     QUESTION_TYPES = (
         ('radio', 'radio'),
@@ -48,7 +53,7 @@ class Question(models.Model):
     text = models.TextField(blank=True, null=True)
     order = models.IntegerField(blank=True, null=True)
     type = models.CharField(
-        max_length = 16, 
+        max_length = 16,
         choices=QUESTION_TYPES,
         default='radio',
     )
@@ -56,11 +61,18 @@ class Question(models.Model):
 
 class Answer(models.Model):
     def  __str__( self ):
-        return "ORDER: {0} | QUESTION: {1} | ANSWER: {2}".format(
-            self.order,
-            self.question.text,
-            self.text,
-        )
+        try:
+            return "ORDER: {0} | QUESTION: {1} | ANSWER: {2}".format(
+                self.order,
+                self.question.text,
+                self.text,
+            )
+        except:
+            return "ORDER: {0} | QUESTION: {1} | ANSWER: {2}".format(
+                self.order,
+                "question does not exist",
+                self.text,
+            )
     question = models.ForeignKey(Question)
     text = models.TextField(blank=True, null=True)
     order = models.IntegerField(blank=True, null=True)
@@ -68,20 +80,39 @@ class Answer(models.Model):
 
 class Comment(models.Model):
     def __str__(self):
-        return "QUESTION: {0} | TEXT: {1}".format(
-            self.question.text,
-            self.text,
-        )
+        try:
+            return "QUESTION: {0} | TEXT: {1}".format(
+                self.question.text,
+                self.text,
+            )
+        except:
+            return "QUESTION: {0} | TEXT: {1}".format(
+                "question does not exist",
+                self.text,
+            )
     question = models.ForeignKey(Question)
     text = models.TextField(blank=True, null=True)
 
 
 class Disable(models.Model):
     def  __str__( self ):
+        rq_texts = ""
+        ra_texts = ""
+
+        for ra in self.requiredAnswers.all():
+            try:
+                rq_texts.join(ra.question.text)
+            except:
+                rq_texts.join("question does not exist")
+            try:
+                ra_texts.join(ra.text)
+            except:
+                ra_texts.join("answer does not exist")
+
         return "DISABLE: {0} | IF ON QUESTION: {1} | ANSWERED WITH: {2}".format(
             self.question.text,
-            "".join(ra.question.text for ra in self.requiredAnswers.all()),
-            "".join(ra.text for ra in self.requiredAnswers.all())
+            rq_texts,
+            ra_texts
         )
     question = models.ForeignKey(Question)
     requiredAnswers = models.ManyToManyField(Answer)
@@ -89,21 +120,47 @@ class Disable(models.Model):
 
 class User(models.Model):
     def __str__(self):
+        aq_texts = ""
+        a_texts = ""
+
+        for a in self.answeredWith.all():
+            try:
+                aq_texts.join(a.question.text)
+            except:
+                aq_texts.join("question does not exist")
+            try:
+                a_texts.join(a.text)
+            except:
+                a_texts.join("answer does not exist")
+
         return "ID: {0} | ON QUESTION: {1} | ANSWERED WITH: {2}".format(
             self.pk,
-            "".join(a.question.text for a in self.answeredWith.all()),
-            "".join(a.text for a in self.answeredWith.all()),
+            aq_texts,
+            a_texts,
         )
     answeredWith = models.ManyToManyField(Answer)
 
 
 class AnswerWeight(models.Model):
     def __str__(self):
+
+        aqt = ""
+        ant = ""
+
+        try:
+            aqt = self.answer.question.text
+        except:
+            aqt = "question does not exist"
+        try:
+            ant = self.answer.text
+        except:
+            ant = "answer does not exist"
+
         return "TYPE: {0} | VALUE: {1} | QUESTION: {2} | WEIGHT FOR ANSWER: {3}".format(
             self.type,
             self.value,
-            self.answer.question.text,
-            self.answer.text,
+            aqt,
+            ant,
         )
     answer = models.ForeignKey(Answer)
     type = models.TextField(blank=True, null=True)
