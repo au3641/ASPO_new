@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+#   Django (1.10.6)
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     #'ASPO_new.apps.AspoNewConfig',
     'ASPO_new',
-    'rest_framework',
-    'django_extensions',
-    'nested_inline'
+    'rest_framework',       # djangorestframework (3.6.2)
+    'django_extensions',    # django-extensions (1.7.8)
+    'nested_inline'         # django-nested-inline (0.3.7)
 ]
 
 MIDDLEWARE = [

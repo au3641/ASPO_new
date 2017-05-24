@@ -23,6 +23,9 @@ def any(request):
 from .models import *
 from .serializers import *
 from rest_framework import viewsets
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import detail_route
 
 # Returns info about ASPO questionnaire
 class QuestionnaireASPO(viewsets.ModelViewSet):
@@ -48,3 +51,19 @@ class AnswerWeightForASPO(viewsets.ModelViewSet):
 class DisableForASPO(viewsets.ModelViewSet):
     queryset = Disable.objects.filter(question__questionnaire__name='ASPO')
     serializer_class = DisableSerializer
+
+class SendAnswersASPO(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+    @detail_route(methods=['post'])
+    def add_useranswers(self, request, pk=None):
+        ans = self.get_object()
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            ans.add_useranswers(serializer.data['answeredWith'])
+            ans.save()
+            return Response({"status":"fok yea"})
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    #return
