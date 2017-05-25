@@ -1,13 +1,28 @@
 from django.shortcuts import render
+from django.views.generic.base import RedirectView
+from django.conf import settings
+from django.conf.urls.static import static
+from django.shortcuts import get_object_or_404
 import re
+
 
 # Create your views here.
 # from django.http import HttpResponse
 
+class AspoIndexRedirect(RedirectView):
+    permanent = False
+    #query_string = True
+    pattern_name = '/'
+
+    def get_redirect_url(self, *args, **kwargs):
+        #return settings.STATIC_ROOT + "ASPO_new/app/pages/index.html"
+        aspo_index = get_object_or_404(settings.STATIC_ROOT + "ASPO_new/app/pages/index.html")
+        aspo_index.update_counter()
+        return super(AspoIndexRedirect, self).get_redirect_url(*args, **kwargs)
 
 # Index/home page
 def index(request):
-    return render(request, "ASPO_new/index.html")
+    return render(request, "ASPO_new/app/pages/index.html")
 
 # Regex handler for static pages
 def any(request):

@@ -20,6 +20,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = [
     url(r'^ASPO/', include('ASPO_new.urls')),
+    #url(r'^ASPO/', RedirectView.get_redirect_url()),
     url(r'^admin/', admin.site.urls),
     url(r'^', RedirectView.as_view(url='/ASPO/', permanent=False), name='aspo'),
 ]

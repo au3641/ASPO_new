@@ -18,7 +18,7 @@ router.register(r'sendAnswersASPO', views.SendAnswersASPO)
 
 urlpatterns = [
     # API
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.AspoIndexRedirect, name='index'),
     # url(r'home', views.home, name='home'),
     # url(r'menu', views.menu, name='menu'),
     # url(r'footer', views.footer, name='footer'),
