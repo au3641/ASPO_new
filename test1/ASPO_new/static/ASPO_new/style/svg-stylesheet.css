@@ -1,0 +1,70 @@
+   .group_color {
+      fill:#000000;
+      stroke:#000000;
+   }
+   .group_overlay_color {
+      fill:#a0a0a0;
+      stroke:#000000;
+   }
+   .questions_color {
+      fill:#000000;
+      stroke:#000000;
+   }
+   .questions_overlay_color {
+      fill:#a0a0a0;
+      stroke:#000000;
+   }
+   .doctor_color {
+      fill:#000000;
+      stroke:#000000;
+   }
+   .doctor_overlay_color {
+      fill:#a0a0a0;
+      stroke:#000000;
+   }
+   .safety_color {
+      fill:#000000;
+      stroke:#000000;
+   }
+   .safety_overlay_color {
+      fill:#a0a0a0;
+      stroke:#000000;
+   }
+   .virus_color {
+      fill:#ff0000;
+      stroke:#ffff00;
+   }
+   .virus_overlay_color {
+      fill:#a0a0a0;
+      stroke:#000000;
+   }
+
+   .semitransparent {
+      fill-opacity:0.42;
+      fill-rule:nonzero;
+   }
+   .opaque {
+      fill-opacity:1;
+      fill-rule:nonzero;
+   }
+   .thinstroke {
+      stroke-width:0.46;
+      stroke-opacity:1;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:none;
+      stroke-miterlimit:4;
+   }
+   .normalstroke {
+      stroke-width:0.6;
+      stroke-opacity:1;
+      stroke-linecap:round;
+      stroke-linejoin:round;
+      stroke-dasharray:none;
+      stroke-miterlimit:4;
+   }
+   .emptypath {
+      fill:none;
+      fill-rule:evenodd;
+   }
+
