@@ -18,7 +18,7 @@ router.register(r'sendAnswersASPO', views.SendAnswersASPO)
 
 urlpatterns = [
     # API
-    url(r'^$', views.AspoIndexRedirect, name='index'),
+    url(r'^$', views.AspoIndexRedirect.as_view(permanent=False), name='index'),
     # url(r'home', views.home, name='home'),
     # url(r'menu', views.menu, name='menu'),
     # url(r'footer', views.footer, name='footer'),
@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^api', include('rest_framework.urls', namespace='rest_framework')),
 
     # View for static pages
-    url(r'.*', views.any, name='any'),
+    # url(r'.*', views.any, name='any'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
