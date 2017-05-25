@@ -15,10 +15,10 @@ class AspoIndexRedirect(RedirectView):
     pattern_name = '/'
 
     def get_redirect_url(self, *args, **kwargs):
-        #return settings.STATIC_ROOT + "ASPO_new/app/pages/index.html"
-        aspo_index = get_object_or_404(settings.STATIC_ROOT + "ASPO_new/app/pages/index.html")
-        aspo_index.update_counter()
-        return super(AspoIndexRedirect, self).get_redirect_url(*args, **kwargs)
+        return settings.STATIC_URL + "ASPO_new/index.html"
+        #aspo_index = get_object_or_404(settings.STATIC_URL + "ASPO_new/app/pages/index.html")
+        #aspo_index.update_counter()
+        #return 
 
 # Index/home page
 def index(request):
