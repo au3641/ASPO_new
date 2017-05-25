@@ -6,7 +6,7 @@
         var that = this;
 		
 		$scope.file = !$routeParams.view ? "" : $routeParams.view;
-		$scope.urlFile = 'ASPO_new/md/std-info/' + $scope.file + '.md';
+		$scope.urlFile = 'app/pages/std-info/' + $scope.file + '.md';
 		
 		$scope.pages = [
 		{
