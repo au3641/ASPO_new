@@ -1,0 +1,40 @@
+<div id="page-symptoms">
+    <h2 class="container">Bolezenski znaki</h2>
+
+    <div class="content-block">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div class="mini-submenu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </div>
+                    <div class="list-group">
+                        <a href="#/bolezenski-znaki/izcedek" class="list-group-item {{ file == 'izcedek' ? 'active' : ''}}">
+                            Izcedek iz spolovila
+                        </a>
+
+                        <a href="#/bolezenski-znaki/razjeda" class="list-group-item {{ file == 'razjeda' ? 'active' : ''}}">
+                            Razjeda na spolovilu
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-8 col-md-9">
+                    <div ng-switch on="file">
+                        <div ng-switch-default>
+                            <div marked ng-include="urlFile"></div>
+                        </div>
+						
+						<div ng-switch-when="">
+                            <div marked ng-include="'app/pages/symptoms/symptoms.md'">
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

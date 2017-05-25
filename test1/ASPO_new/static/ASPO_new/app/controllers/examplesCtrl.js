@@ -6,7 +6,7 @@
         var that = this;
 		
 		$scope.file = !$routeParams.view ? "gonoreja-primer" : $routeParams.view;
-		$scope.urlFile = 'ASPO_new/md/examples/' + $scope.file + '.md';
+		$scope.urlFile = 'app/pages/examples/' + $scope.file + '.md';
 		
 		$scope.pages = [
 		{
