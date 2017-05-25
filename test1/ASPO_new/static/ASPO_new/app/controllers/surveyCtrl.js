@@ -90,11 +90,16 @@
 			var red = 0;
 			var pinky = 0;
 			var alertlevel = 1;
+			var pack = {answeredWith: new Array()};		// list of selected answers
 
 			$scope.questions.forEach(function(question)
 			{
 				question.answers.forEach(function(answer)
                 {
+                	// if answers was selected, add it to pack
+                	if(answer.selected && (answer.pk != $scope.consentQuestion.consentConfirmPK ||answer.pk != $scope.consentQuestion.consentRefusePK))
+						pack["answeredWith"].push(answer.pk);
+
 					if(answer.selected && answer.weight.length != 0)
 					{
 						if(answer.weight.type == "semafor")
@@ -127,13 +132,22 @@
 
 			for(var i = 0; i < $scope.consentQuestion.answers.length; i++)
 			{
-				if($scope.consentQuestion.answers[i].pk == $scope.consent.consentConfirmPK)
+				if($scope.consentQuestion.answers[i].pk == $scope.consentQuestion.consentConfirmPK)
 					if($scope.consentQuestion.answers[i].selected)
 						$scope.userConsent = true;
 			}
 
 			// TODO save results into database
 
+			// If user did not consent, drop all data in pack and exit
+			if($scope.userConsent == false)
+			{
+                pack = null;
+                return;
+            }
+
+            // If user did consent, send data and exit
+			aspoService.sendData(pack);
 			return;
 			/*
 			that.answered.shift();
@@ -287,6 +301,7 @@
             $scope.consentQuestion.answers.push({pk: -1, question: -1, text: $scope.questionnaire.consentAcceptText, order: 1, weight: []});
             $scope.consentQuestion.answers.push({pk: -2, question: -1, text: $scope.questionnaire.consentRefuseText, order: 2, weight: []});
             $scope.consentQuestion.consentConfirmPK = -1;
+            $scope.consentQuestion.consentRefusePK = -1;
 
             // Add consent question to question set, just before ordering
             $scope.questions.push($scope.consentQuestion);
