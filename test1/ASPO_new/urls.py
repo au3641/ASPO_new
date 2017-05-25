@@ -14,6 +14,7 @@ router.register(r'questionsASPO', views.QuestionSetASPO) # get every question fr
 router.register(r'answersASPO', views.AnswerSetForASPO)
 router.register(r'disablesASPO', views.DisableForASPO)
 router.register(r'answerWeightsASPO', views.AnswerWeightForASPO)
+router.register(r'sendAnswersASPO', views.SendAnswersASPO)
 
 urlpatterns = [
     # API

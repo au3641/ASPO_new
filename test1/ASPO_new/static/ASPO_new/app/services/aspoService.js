@@ -4,7 +4,8 @@
 	angular.module("ASPO").factory("AspoService", ["$http", "$q", 
 	function ($http, $q) {
 	    var that = this;
-	    
+	    $http.defaults.xsrfCookieName = 'csrftoken';
+		$http.defaults.xsrfHeaderName = 'X-CSRFToken';
 	    //var baseUrl = "api/"; https://aspo.mf.uni-lj.si/rest/testRest/questions
 	    //var baseUrl = "http://localhost:8080/zdravo-mednozje/rest/testRest/";
 	    //var baseUrl = "https://aspo.mf.uni-lj.si/rest/testRest/";
@@ -43,7 +44,7 @@
 		
 		function sendData(answeredQuestions) {
 			//$http.post(baseUrl + "send-data.php", answeredQuestions);
-			$http.post(baseUrl + "seeeeeeeeeeeeeeeejv", answeredQuestions);
+			$http.post(baseUrl + "sendAnswersASPO/", answeredQuestions);
 		}
 
 	    // Return API
