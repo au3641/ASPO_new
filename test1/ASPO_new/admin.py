@@ -33,4 +33,3 @@ admin.site.register(Answer)
 admin.site.register(Disable)
 admin.site.register(User)
 admin.site.register(AnswerWeight)
-
