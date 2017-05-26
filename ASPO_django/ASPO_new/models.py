@@ -14,7 +14,7 @@ class Questionnaire(models.Model):
             self.name,
             self.introText,
         )
-    name = models.TextField(unique=True, max_length=255)
+    name = models.CharField(unique=True, max_length=255)
     introText = models.TextField(blank=True, null=True)
     consentQuestionText = models.TextField(blank=True, null=True)
     consentAcceptText = models.TextField(blank=True, null=True)
