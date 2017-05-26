@@ -1,0 +1,50 @@
+<div id="page-survey">
+    <h2 class="container">Vprašalnik</h2>
+
+    <div class="content-block">
+        <div class="container"> 
+			<div class="col-md-offset-3 col-md-6">
+						
+				<carousel interval="-1" id="survey-questions" ng-show="alertLevel == -1" class="carousel-fade">
+					<slide ng-repeat="q in questions" active="q.active" class="question-page">
+						<h3 class="survey-question">
+							{{actualDisplayNumber}}. {{q.text}}
+							<div ng-if="q.type == 'checkbox'" class="question-info">Možnih je več odgovorov.</div>
+						</h3>
+						
+
+						<ul id="ulSurvey" ng-switch on="q.type">
+							<li ng-repeat="ans in q.answers" ng-switch-when="checkbox">
+								<label><input name="ans{{q.pk}}" type="checkbox" ng-change="changeCheckbox()" ng-model="ans.selected"> {{ ans.text }}</label>
+							</li>
+							<li ng-repeat="ans in q.answers" ng-switch-when="radio">
+								<label><input name="ans{{q.pk}}" type="radio" ng-change="change(ans.pk)" ng-model="ans.selected" ng-value="true"> {{ ans.text }}</label>
+							</li>
+						</ul>
+
+						<div class="buttons">
+							<button class="btn btn-primary" ng-click="back()" ng-show="displayNr > 0">Nazaj</button>
+							<button class="btn btn-primary" id="button" ng-click="next()" ng-disabled="!moveOn">Naprej</button>
+						</div>
+					</slide>
+				</carousel>
+
+				<div ng-show="alertLevel >= 0" class="alert" ng-class="alertLevel == 1 ? 'alert-success' : alertLevel == 2 ? 'alert-warning' : 'alert-danger'">
+					<span ng-switch on="alertLevel">
+						<span ng-switch-when="1">
+							Verjetnost, da imate spolno prenosljivo okužbo, je zelo majhna. Če ste zaskrbljeni, pojdite k izbranemu osebnemu zdravniku. Izogibajte se tveganim spolnim odnosom ter pravilno in dosledno uporabljajte kondom.
+						</span>
+						
+						<span ng-switch-when="2">
+							Obstaja verjetnost, da imate spolno prenosljivo okužbo. Veliko spolno prenosljivih okužb lahko poteka brez bolezenskih znakov. Pojdite k izbranemu osebnemu zdravniku, da vas bo napotil k ustreznemu specialistu, v kolikor se mu bo to zdelo potrebno. Izogibajte se tveganim spolnim odnosom ter pravilno in dosledno uporabljajte kondom.
+						</span>
+						
+						<span ng-switch-when="3">
+							Obstaja zelo velika verjetnost, da imate spolno prenosljivo okužbo, zato se izogibajte spolnim odnosom (tudi oralnim), dokler ne boste prepričani, da nimate spolno prenosljive okužbe. Čim prej pojdite do izbranega osebnega zdravnika, ki vas bo napotil k ustreznemu specialistu.
+						</span>
+					</span>
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

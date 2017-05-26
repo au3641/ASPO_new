@@ -1,0 +1,28 @@
+{% load static %}
+<script type="text/javascript" src="{% static 'ASPO_new/controllers/pageCtrl.js' %}"></script>
+<nav class="navbar navbar-default navbar-static-top" id="header">
+  <div class="container">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+	  <a class="navbar-brand" href="#/">
+		<img src="{% static "ASPO_new/image/logo.png" %}" class="img-responsive" />
+	  </a>
+	</div>
+	<div id="navbar" class="navbar-collapse collapse">
+	  <ul class="nav navbar-nav navbar-right">
+		<li ng-repeat="menu in main.menuItems" class="dropdown">
+			<a href="{% templatetag openvariable %}menu.link{% templatetag closevariable %}"  class="dropdown-toggle">{% templatetag openvariable %}menu.text{% templatetag closevariable %}</a>
+				<ul ng-if="menu.subpages.length > 0" class="dropdown-menu" role="menu">
+					<li ng-repeat="sublink in menu.subpages">
+						<a href="{% templatetag openvariable %}menu.link + '/' + sublink.link{% templatetag closevariable %}">{% templatetag openvariable %}sublink.name{% templatetag closevariable %}</a>
+				</ul>
+		</li>
+	  </ul>
+	</div><!--/.nav-collapse -->
+  </div>
+</nav>

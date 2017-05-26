@@ -1,0 +1,1933 @@
+[
+    {
+        "model": "ASPO_new.Questionnaire",
+        "pk": 1,
+        "fields":
+        {
+            "name": "ASPO"
+            "introText": "Pozdravljeni v začetnem oknu spletnega vprašalnika, ki vam bo pomagal oceniti, kakšna je verjetnost, da imate spolno prenosljivo okužbo. Ko boste odgovorili na zastavljena vprašanja o vašem spolnem vedenju in morebitnih zdravstvenih težavah, bo sistem podal oceno stopnje tveganja. Vprašalnik ni nadomestilo za pregled pri zdravniku. Ob vsakem tveganem spolnem vedenju se posvetujte s strokovnjakom.<br>Vprašalniku boste namenili največ pet minut. Nadaljujte s klikom gumba Naprej."
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 1,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Spol?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 2,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Starost?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 3,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste že kdaj imeli spolne odnose (genitalne, oralne, analne)?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 4,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali imate stalnega partnerja/partnerko?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 5,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Število spolnih partnerjev/partnerk v zadnjem letu?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 6,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste imeli v zadnjih 3 mesecih novega spolnega partnerja/partnerko?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 7,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Kakšnega spola so osebe, s katerimi ste imeli spolne odnose?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 8,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Kakšne vrste spolnih odnosov ste imeli?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 9,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste pri spolnih odnosih (genitalni, oralni, analni) VEDNO in pravilno uporabljali kondom?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 10,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste noseči?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 11,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste imeli spolne odnose z osebo, ki pogosto menja spolne partnerje/partnerke?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 12,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste imeli spolne odnose z osebo, ki uživa droge?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 13,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste imeli spolne odnose z osebo, ki je imela znake spolno prenosljive okužbe (izcedek iz spolovila, izpuščaj, ranica v predelu spolovila) ?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 14,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste že kdaj imeli katero od spolno prenosljivih okužb?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 15,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali uživate droge (njuhate, vbrizgavate)?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 16,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali imate izcedek iz spolovila?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 17,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali imate težave pri uriniranju?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 18,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste opazili spremembe na spolovilu?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 19,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste opazili spremembe na zadnjiku (anusu)?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 20,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali ste opazili spremembe v ustni votlini?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 21,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali imate bolečine?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Question",
+        "pk": 22,
+        "fields":
+        {
+            "questionnaire": 1,
+            "text": "Ali imate katerega od naslednjih bolezenskih znakov?",
+            "idGroup": 0
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 1,
+        "fields":
+        {
+            "question": 10,
+            "requiredAnswers": [1]
+        }  
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 2,
+        "fields":
+        {
+            "question": 4,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 3,
+        "fields":
+        {
+            "question": 5,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 4,
+        "fields":
+        {
+            "question": 6,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 5,
+        "fields":
+        {
+            "question": 7,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 6,
+        "fields":
+        {
+            "question": 8,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 7,
+        "fields":
+        {
+            "question": 9,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 8,
+        "fields":
+        {
+            "question": 10,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 9,
+        "fields":
+        {
+            "question": 11,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 10,
+        "fields":
+        {
+            "question": 12,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 11,
+        "fields":
+        {
+            "question": 13,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 12,
+        "fields":
+        {
+            "question": 14,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.Disable",
+        "pk": 13,
+        "fields":
+        {
+            "question": 15,
+            "requiredAnswers": [10]
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 1,
+        "fields":
+        {
+            "answer": 13,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 2,
+        "fields":
+        {
+            "answer": 14,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 3,
+        "fields":
+        {
+            "answer": 15,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 4,
+        "fields":
+        {
+            "answer": 16,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 5,
+        "fields":
+        {
+            "answer": 17,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 6,
+        "fields":
+        {
+            "answer": 18,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 7,
+        "fields":
+        {
+            "answer": 19,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 8,
+        "fields":
+        {
+            "answer": 20,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 9,
+        "fields":
+        {
+            "answer": 21,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 10,
+        "fields":
+        {
+            "answer": 22,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 11,
+        "fields":
+        {
+            "answer": 23,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 12,
+        "fields":
+        {
+            "answer": 24,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 13,
+        "fields":
+        {
+            "answer": 25,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 14,
+        "fields":
+        {
+            "answer": 26,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 15,
+        "fields":
+        {
+            "answer": 27,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 16,
+        "fields":
+        {
+            "answer": 28,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 17,
+        "fields":
+        {
+            "answer": 29,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 18,
+        "fields":
+        {
+            "answer": 30,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 19,
+        "fields":
+        {
+            "answer": 31,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 20,
+        "fields":
+        {
+            "answer": 32,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 21,
+        "fields":
+        {
+            "answer": 33,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 22,
+        "fields":
+        {
+            "answer": 34,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 23,
+        "fields":
+        {
+            "answer": 35,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 24,
+        "fields":
+        {
+            "answer": 36,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 25,
+        "fields":
+        {
+            "answer": 37,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 26,
+        "fields":
+        {
+            "answer": 38,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 27,
+        "fields":
+        {
+            "answer": 39,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 28,
+        "fields":
+        {
+            "answer": 40,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 29,
+        "fields":
+        {
+            "answer": 41,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 30,
+        "fields":
+        {
+            "answer": 42,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 31,
+        "fields":
+        {
+            "answer": 43,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 32,
+        "fields":
+        {
+            "answer": 44,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 33,
+        "fields":
+        {
+            "answer": 45,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 34,
+        "fields":
+        {
+            "answer": 46,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 35,
+        "fields":
+        {
+            "answer": 47,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 36,
+        "fields":
+        {
+            "answer": 48,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 37,
+        "fields":
+        {
+            "answer": 49,
+            "type": "semafor",
+            "value": 4
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 38,
+        "fields":
+        {
+            "answer": 50,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 39,
+        "fields":
+        {
+            "answer": 51,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 40,
+        "fields":
+        {
+            "answer": 52,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 41,
+        "fields":
+        {
+            "answer": 53,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 42,
+        "fields":
+        {
+            "answer": 54,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 43,
+        "fields":
+        {
+            "answer": 55,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 44,
+        "fields":
+        {
+            "answer": 56,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 45,
+        "fields":
+        {
+            "answer": 57,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 46,
+        "fields":
+        {
+            "answer": 58,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 47,
+        "fields":
+        {
+            "answer": 59,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 48,
+        "fields":
+        {
+            "answer": 60,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 49,
+        "fields":
+        {
+            "answer": 61,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 50,
+        "fields":
+        {
+            "answer": 62,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 51,
+        "fields":
+        {
+            "answer": 63,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 52,
+        "fields":
+        {
+            "answer": 64,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 53,
+        "fields":
+        {
+            "answer": 65,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 54,
+        "fields":
+        {
+            "answer": 66,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 55,
+        "fields":
+        {
+            "answer": 67,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 56,
+        "fields":
+        {
+            "answer": 68,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 57,
+        "fields":
+        {
+            "answer": 69,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 58,
+        "fields":
+        {
+            "answer": 71,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 59,
+        "fields":
+        {
+            "answer": 72,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 60,
+        "fields":
+        {
+            "answer": 73,
+            "type": "semafor",
+            "value": 3
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 61,
+        "fields":
+        {
+            "answer": 74,
+            "type": "semafor",
+            "value": 1
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 62,
+        "fields":
+        {
+            "answer": 75,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 63,
+        "fields":
+        {
+            "answer": 76,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 64,
+        "fields":
+        {
+            "answer": 77,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.AnswerWeight",
+        "pk": 65,
+        "fields":
+        {
+            "answer": 78,
+            "type": "semafor",
+            "value": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 1,
+        "fields":
+        {
+            "question": 1,
+            "text": "Moški",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 2,
+        "fields":
+        {
+            "question": 1,
+            "text": "Ženski",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 3,
+        "fields":
+        {
+            "question": 2,
+            "text": "Manj kot 16",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 4,
+        "fields":
+        {
+            "question": 2,
+            "text": "16-24",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 5,
+        "fields":
+        {
+            "question": 2,
+            "text": "25-34",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 6,
+        "fields":
+        {
+            "question": 2,
+            "text": "35-44",
+            "type": "radio",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 7,
+        "fields":
+        {
+            "question": 2,
+            "text": "45-59",
+            "type": "radio",
+            "order": 5
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 8,
+        "fields":
+        {
+            "question": 2,
+            "text": "Več kot 60",
+            "type": "radio",
+            "order": 6
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 9,
+        "fields":
+        {
+            "question": 3,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 10,
+        "fields":
+        {
+            "question": 3,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 11,
+        "fields":
+        {
+            "question": 4,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 12,
+        "fields":
+        {
+            "question": 4,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 13,
+        "fields":
+        {
+            "question": 5,
+            "text": "0",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 14,
+        "fields":
+        {
+            "question": 5,
+            "text": "1-3",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 15,
+        "fields":
+        {
+            "question": 5,
+            "text": "4-5",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 16,
+        "fields":
+        {
+            "question": 5,
+            "text": "6 ali več",
+            "type": "radio",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 17,
+        "fields":
+        {
+            "question": 6,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 18,
+        "fields":
+        {
+            "question": 6,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 19,
+        "fields":
+        {
+            "question": 7,
+            "text": "Ženske",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 20,
+        "fields":
+        {
+            "question": 7,
+            "text": "Moški",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 21,
+        "fields":
+        {
+            "question": 7,
+            "text": "Oboje",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 22,
+        "fields":
+        {
+            "question": 8,
+            "text": "Genitalne",
+            "type": "checkbox",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 23,
+        "fields":
+        {
+            "question": 8,
+            "text": "Oralne",
+            "type": "checkbox",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 24,
+        "fields":
+        {
+            "question": 8,
+            "text": "Analne",
+            "type": "checkbox",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 25,
+        "fields":
+        {
+            "question": 9,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 26,
+        "fields":
+        {
+            "question": 9,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 27,
+        "fields":
+        {
+            "question": 10,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 28,
+        "fields":
+        {
+            "question": 10,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 29,
+        "fields":
+        {
+            "question": 10,
+            "text": "Ne vem",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 30,
+        "fields":
+        {
+            "question": 11,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 31,
+        "fields":
+        {
+            "question": 11,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 32,
+        "fields":
+        {
+            "question": 11,
+            "text": "Ne vem",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 33,
+        "fields":
+        {
+            "question": 12,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 34,
+        "fields":
+        {
+            "question": 12,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 35,
+        "fields":
+        {
+            "question": 12,
+            "text": "Ne vem",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 36,
+        "fields":
+        {
+            "question": 13,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 37,
+        "fields":
+        {
+            "question": 13,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 38,
+        "fields":
+        {
+            "question": 13,
+            "text": "Ne vem",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 39,
+        "fields":
+        {
+            "question": 14,
+            "text": "Ne",
+            "type": "checkbox",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 40,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, gonorejo",
+            "type": "checkbox",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 41,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, klamidijsko okužbo",
+            "type": "checkbox",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 42,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, trihomonoza",
+            "type": "checkbox",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 43,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, sifilis",
+            "type": "checkbox",
+            "order": 5
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 44,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, geniralni herpes",
+            "type": "checkbox",
+            "order": 6
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 45,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, genitalne bradavice",
+            "type": "checkbox",
+            "order": 7
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 46,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, hepatitis B",
+            "type": "checkbox",
+            "order": 8
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 47,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, hepatitis C",
+            "type": "checkbox",
+            "order": 9
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 48,
+        "fields":
+        {
+            "question": 14,
+            "text": "Da, HIV/aids",
+            "type": "checkbox",
+            "order": 10
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 49,
+        "fields":
+        {
+            "question": 15,
+            "text": "Da",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 50,
+        "fields":
+        {
+            "question": 15,
+            "text": "Ne",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 51,
+        "fields":
+        {
+            "question": 16,
+            "text": "Ne",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 52,
+        "fields":
+        {
+            "question": 16,
+            "text": "Da, prozoren",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 53,
+        "fields":
+        {
+            "question": 16,
+            "text": "Da, belkast",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 54,
+        "fields":
+        {
+            "question": 16,
+            "text": "Da, gnojen, rumen",
+            "type": "radio",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 55,
+        "fields":
+        {
+            "question": 16,
+            "text": "Da, gost, bel, sirast",
+            "type": "radio",
+            "order": 5
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 56,
+        "fields":
+        {
+            "question": 17,
+            "text": "Ne",
+            "type": "checkbox",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 57,
+        "fields":
+        {
+            "question": 17,
+            "text": "Da, pekoče uriniranje",
+            "type": "checkbox",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 58,
+        "fields":
+        {
+            "question": 17,
+            "text": "Da, pogosto uriniranje",
+            "type": "checkbox",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 59,
+        "fields":
+        {
+            "question": 17,
+            "text": "Da, pogosto me sili na uriniranje",
+            "type": "checkbox",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 60,
+        "fields":
+        {
+            "question": 18,
+            "text": "Ne",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 61,
+        "fields":
+        {
+            "question": 18,
+            "text": "Da, izpuščaj",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 62,
+        "fields":
+        {
+            "question": 18,
+            "text": "Da, mehurček",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 63,
+        "fields":
+        {
+            "question": 18,
+            "text": "Da, ranico",
+            "type": "radio",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 64,
+        "fields":
+        {
+            "question": 18,
+            "text": "Da, bradavico",
+            "type": "radio",
+            "order": 5
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 65,
+        "fields":
+        {
+            "question": 19,
+            "text": "Ne",
+            "type": "",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 66,
+        "fields":
+        {
+            "question": 19,
+            "text": "Da, srbečico",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 67,
+        "fields":
+        {
+            "question": 19,
+            "text": "Da, mehurček",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 68,
+        "fields":
+        {
+            "question": 19,
+            "text": "Da, ranico",
+            "type": "radio",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 69,
+        "fields":
+        {
+            "question": 19,
+            "text": "Da, bradavico",
+            "type": "radio",
+            "order": 5
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 70,
+        "fields":
+        {
+            "question": 19,
+            "text": "Da, izcedek",
+            "type": "radio",
+            "order": 6
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 71,
+        "fields":
+        {
+            "question": 20,
+            "text": "Ne",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 72,
+        "fields":
+        {
+            "question": 20,
+            "text": "Da, razjedo",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 73,
+        "fields":
+        {
+            "question": 20,
+            "text": "Da, obloge po sluznici",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 74,
+        "fields":
+        {
+            "question": 21,
+            "text": "Ne",
+            "type": "radio",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 75,
+        "fields":
+        {
+            "question": 21,
+            "text": "Da, boli spolovilo",
+            "type": "radio",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 76,
+        "fields":
+        {
+            "question": 21,
+            "text": "Da, boli zadnjik",
+            "type": "radio",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 77,
+        "fields":
+        {
+            "question": 21,
+            "text": "Da, boli žrelo",
+            "type": "radio",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 78,
+        "fields":
+        {
+            "question": 21,
+            "text": "Da, boli spodnji del trebuha",
+            "type": "radio",
+            "order": 5
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 79,
+        "fields":
+        {
+            "question": 22,
+            "text": "Vročina",
+            "type": "checkbox",
+            "order": 1
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 80,
+        "fields":
+        {
+            "question": 22,
+            "text": "Glavobol",
+            "type": "checkbox",
+            "order": 2
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 81,
+        "fields":
+        {
+            "question": 22,
+            "text": "Splošno slabo počutje",
+            "type": "checkbox",
+            "order": 3
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 82,
+        "fields":
+        {
+            "question": 22,
+            "text": "Povečane bezgavke",
+            "type": "checkbox",
+            "order": 4
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 83,
+        "fields":
+        {
+            "question": 22,
+            "text": "Bolečine v mišicah in sklepih",
+            "type": "checkbox",
+            "order": 5
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 84,
+        "fields":
+        {
+            "question": 22,
+            "text": "Zlatenica",
+            "type": "checkbox",
+            "order": 6
+        }
+    },
+    {
+        "model": "ASPO_new.Answer",
+        "pk": 85,
+        "fields":
+        {
+            "question": 22,
+            "text": "Nič od naštetega",
+            "type": "checkbox",
+            "order": 7
+        }
+    }
+]

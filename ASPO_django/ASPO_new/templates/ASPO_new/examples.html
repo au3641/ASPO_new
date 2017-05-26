@@ -1,0 +1,30 @@
+{% load static %}
+
+<div id="page-std-info">
+    <h2 class="container">Primeri</h2>
+
+    <div class="content-block">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-4 col-md-3 sidebar">
+                    <div class="mini-submenu">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </div>
+                    <div class="list-group">
+                        <a ng-repeat="link in pages" href="#/primeri/{% templatetag openvariable %} link.link {% templatetag closevariable %}" class="list-group-item {% templatetag openvariable %} file == link.link ? 'active' : ''{% templatetag closevariable %}">
+                            {% templatetag openvariable %} link.name {% templatetag closevariable %}
+                        </a>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-8 col-md-9">
+					<div marked ng-include="urlFile"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
