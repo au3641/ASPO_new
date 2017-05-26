@@ -2,3 +2,5 @@
 *_secret.py
 settings_dev.py
 settings_secret.py
+.idea
+.idea/*
