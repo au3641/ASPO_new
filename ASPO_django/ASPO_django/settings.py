@@ -6,3 +6,4 @@ except Exception, e:
     traceback.print_exc()
     print("Remember to copy settings_secret-example.py into settings_secret.py and change the secret key!")
     exit(1)
+

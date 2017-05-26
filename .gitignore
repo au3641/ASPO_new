@@ -1,4 +1,4 @@
-*_secret.py
 *_dev.py
+*_secret.py
 settings_dev.py
 settings_secret.py
