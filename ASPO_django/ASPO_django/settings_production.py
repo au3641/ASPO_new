@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'test1.urls'
+ROOT_URLCONF = 'ASPO_django.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'test1.wsgi.application'
+WSGI_APPLICATION = 'ASPO_django.wsgi.application'
 
 
 # Database
