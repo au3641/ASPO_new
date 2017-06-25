@@ -205,6 +205,7 @@
 			for(var i = 0; i < questions.length; i++)
 			{
 				// Add property 'active' to indicate which question is displayed
+				questions[i].tid = i; 		// Question id for testers
 				questions[i].active = false;// Required for Bootstrap UI Carousel
 				questions[i].answers = [];	// array filled by getAnswers
 				questions[i].disables = []; // array filled by getDisables
@@ -224,6 +225,7 @@
 
             // Create consent question on scope for quick access later
 			$scope.consentQuestion = {};
+            $scope.consentQuestion.tid = $scope.questions.length;
             $scope.consentQuestion.pk = -1;
             $scope.consentQuestion.questionnaire = $scope.questionnaire.pk;
             $scope.consentQuestion.text = $scope.questionnaire.consentQuestionText;
