@@ -8,6 +8,10 @@
 		sc.alertLevel = -1;		// Controls which alert message to display at the end of survey
 		sc.moveOn = false;		// If false, "next" button will be greyed out
 		sc.userConsent = false;	// Tells us if user consented to send his answers for research - by default user consent must be set to false
+        
+        sc.questionnaire = 0;
+        sc.questions = new Array();
+        sc.consentQuestion = {};
 
 		// Function is called when radio button selection changes
 		sc.change = function(pk){
