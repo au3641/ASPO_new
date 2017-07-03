@@ -24,7 +24,7 @@
 
 						<div class="buttons">
 							<button class="btn btn-primary" ng-click="back()" ng-show="displayNr > 0">Nazaj</button>
-							<button class="btn btn-primary" id="button" name="button_{{q.tid}}" ng-click="next()" ng-disabled="!moveOn">Naprej</button>
+							<button class="btn btn-primary" id="button" name="button_{{q.tid}}" actual_id="{{q.pk}}" ng-click="next()" ng-disabled="!moveOn">Naprej</button>
 						</div>
 					</slide>
 				</carousel>
