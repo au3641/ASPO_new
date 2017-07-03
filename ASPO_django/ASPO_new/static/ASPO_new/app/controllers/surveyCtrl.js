@@ -18,8 +18,6 @@
         sc.answersLoaded = false;
         sc.disablesLoaded = false;
         sc.answerWeightsLoaded = false;
-        sc.loadCounter = 0;
-        sc.expectedLoadCount = 5;
 
         sc.tempQuestions = new Array();
         sc.tempAnswers = new Array();
@@ -398,6 +396,11 @@
 					}
 				}
 			}
+			
+			sc.tempQuestions = null;
+			sc.tempAnswers = null;
+			sc.tempDisables = null;
+			sc.tempAnswerWeights = null;
 		}
         
         /*
