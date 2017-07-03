@@ -12,7 +12,23 @@
         sc.questionnaire = 0;
         sc.questions = new Array();
         sc.consentQuestion = {};
+        
+        sc.questionnaireLoaded = false;
+        sc.questionsLoaded = false;
+        sc.answersLoaded = false;
+        sc.disablesLoaded = false;
+        sc.answerWeightsLoaded = false;
+        sc.loadCounter = 0;
+        sc.expectedLoadCount = 5;
 
+        sc.tempQuestions = new Array();
+        sc.tempAnswers = new Array();
+        sc.tempDisables = new Array();
+        sc.tempAnswerWeights = new Array();
+        sc.linked = false;
+        
+        var linkRunner = setInterval(function(){linkSurveyData()}, 1000);
+        
 		// Function is called when radio button selection changes
 		sc.change = function(pk){
 			sc.moveOn = true;	// Enable "next" button
@@ -194,14 +210,197 @@
 			// Increase displayed number by 1
 			sc.actualDisplayNumber++;
 		};
-
+		
 		// This function is executed first at survey load
 		aspoService.getQuestionnaire().then(function (questionnaire)
         {
         	// We get all the data from the database about our questionnaire and save it in scope
             sc.questionnaire = questionnaire[0];
+            sc.questionnaireLoaded = true;
+            linkSurveyData();
         });
+		
+        aspoService.getQuestions().then(function (questions)
+        {
+            sc.tempQuestions = questions;
+            sc.questionsLoaded = true;
+            linkSurveyData();
+        });
+        
+        aspoService.getAnswers().then(function (answers)
+		{
+		    sc.tempAnswers = answers;
+            sc.answersLoaded = true;
+            linkSurveyData();
+        });
+        
+        aspoService.getDisables().then(function (disables)
+		{
+		    sc.tempDisables = disables;
+            sc.disablesLoaded = true;
+            linkSurveyData();
+        });
+        
+        aspoService.getAnswerWeights().then(function (disables)
+		{
+		    sc.tempAnswerWeights = disables;
+            sc.answerWeightsLoaded = true;
+            linkSurveyData();
+        });
+        
+        
+        // Service calls this function after it gets questions from the database
+		function linkSurveyData()
+		{
+		    if(sc.linked)
+		        return;
+		    if(!sc.questionnaireLoaded || !sc.questionsLoaded || !sc.answersLoaded || !sc.disablesLoaded || !sc.answerWeightsLoaded)
+		        return;
+            
+		    sc.linked = true;
+		    clearInterval(linkRunner);
+		    
+			// Add aditional parameters to questions
+			for(var i = 0; i < sc.tempQuestions.length; i++)
+			{
+				// Add property 'active' to indicate which question is displayed
+				sc.tempQuestions[i].tid = i; 		// Question id for testers
+				sc.tempQuestions[i].active = false;// Required for Bootstrap UI Carousel
+				sc.tempQuestions[i].answers = [];	// array filled by getAnswers
+				sc.tempQuestions[i].disables = []; // array filled by getDisables
+				sc.tempQuestions[i].ninja = false; // ninja == disabled == hidden (ninja is not reserved in JS ^^)
+				// if question is ninja, then do not send it's answer in a result
+			}
 
+			sc.displayNr = 0; // Tells us which question is active
+            sc.questions = new Array(); // Prepare scope variable for question storage
+
+            // Only keep questions from selected questionnaire (select questionnaire in *service.js
+            for(var i = 0; i < sc.tempQuestions.length; i++)
+            {
+                if(sc.tempQuestions[i].questionnaire == sc.questionnaire.pk)
+                    sc.questions.push(sc.tempQuestions[i]);
+            }
+
+            // Create consent question on scope for quick access later
+			sc.consentQuestion = {};
+            sc.consentQuestion.tid = sc.questions.length;
+            sc.consentQuestion.pk = -1;
+            sc.consentQuestion.questionnaire = sc.questionnaire.pk;
+            sc.consentQuestion.text = sc.questionnaire.consentQuestionText;
+            sc.consentQuestion.order = sc.questionnaire.consentShowOrder;
+            sc.consentQuestion.type = "radio";
+            sc.consentQuestion.active = false;
+            sc.consentQuestion.answers = [];
+            sc.consentQuestion.disables = [];
+            sc.consentQuestion.ninja = false;
+
+            // -1 private key is accept, -2 is refuse
+            sc.consentQuestion.answers.push({pk: -1, question: -1, text: sc.questionnaire.consentAcceptText, order: 1, weight: []});
+            sc.consentQuestion.answers.push({pk: -2, question: -1, text: sc.questionnaire.consentRefuseText, order: 2, weight: []});
+            sc.consentQuestion.consentConfirmPK = -1;
+            sc.consentQuestion.consentRefusePK = -1;
+
+            // Add consent question to question set, just before ordering
+            sc.questions.push(sc.consentQuestion);
+
+			sc.questions.sort(function (a, b)
+			{
+				return a.order - b.order;
+			});
+
+			// Mark first one as active
+			sc.questions[0].active = true;
+
+		// Service calls this function after it gets answers from the database
+				    
+			// Go through all the data we get
+			for(var i = 0; i < sc.tempAnswers.length; i++)
+			{
+				sc.tempAnswers[i].selected = false; // did user select this question
+				sc.tempAnswers[i].weight = -1;		 // answer weight (or in our case alert level)
+
+				for(var j = 0; j < sc.questions.length; j++)
+				{
+					// Add answer to the correspoinding question
+					if(sc.questions[j].pk == sc.tempAnswers[i].question)
+                        sc.questions[j].answers.push(sc.tempAnswers[i]);
+				}
+			}
+
+			// Sort answers on each question in ascending order
+			for(var i = 0; i < sc.questions.length; i++)
+			{
+				sc.questions[i].answers.sort(function(a, b)
+				{
+					return a.order - b.order;
+				});
+			}
+		
+
+		// Service calls this function after it gets disables from the database
+		
+		    
+			// Go through all the data we get
+			for(var i = 0; i < sc.tempDisables.length; i++)
+			{
+				// Sort requiredAnswers in ascending order
+				sc.tempDisables[i].requiredAnswers.sort(function (a, b)
+				{
+					return a.requiredAnswers - b.requiredAnswers;
+				});
+
+				// Array of question IDs (array index)
+				// It tells us on which question each requiredAnswers is attached to (for faster runtime look-up)
+				sc.tempDisables[i].relatedQAs = [];
+
+				// Find corresponding question IDs
+				// Check through required answers on current disable
+				for(var j = 0; j < sc.tempDisables[i].requiredAnswers.length; j++)
+				{
+					// Check thorugh every possible questions
+					for(var k = 0; k < sc.questions.length; k++)
+					{
+						// If answer we seek is in this question
+						for(var l = 0; l < sc.questions[k].answers.length; l++)
+						{
+                            if (sc.questions[k].answers[l].pk == sc.tempDisables[i].requiredAnswers[j])
+                                sc.tempDisables[i].relatedQAs.push(k); // Add question id to related
+                        }
+					}
+				}
+
+				// Attach this disable to every question it can disable
+				for(var j = 0; j < sc.questions.length; j++)
+				{
+					// Add disable to the correspoinding question
+					if(sc.questions[j].pk == sc.tempDisables[i].question)
+						sc.questions[j].disables.push(sc.tempDisables[i]);
+				}
+            }
+		
+
+		// Service calls this function after it gets weights from the database
+		
+		    
+			// Check through all the answer weights we got
+			for(var i = 0; i < sc.tempAnswerWeights.length; i++)
+			{
+				// Check through every question
+				for(var j = 0; j < sc.questions.length; j++)
+				{
+					// Check through every answer on this question
+					for(var k = 0; k < sc.questions[j].answers.length; k++)
+					{
+						// If current weight belongs to current answer
+						if(sc.questions[j].answers[k].pk == sc.tempAnswerWeights[i].answer)
+							sc.questions[j].answers[k].weight = sc.tempAnswerWeights[i]; // add weight value to the answer
+					}
+				}
+			}
+		}
+        
+        /*
 		// Service calls this function after it gets questions from the database
 		aspoService.getQuestions().then(function (questions)
 		{
@@ -216,6 +415,9 @@
 				questions[i].ninja = false; // ninja == disabled == hidden (ninja is not reserved in JS ^^)
 				// if question is ninja, then do not send it's answer in a result
 			}
+			var a = 0;
+			a += 1;
+			while(!sc.questionnaireLoaded);
 
 			sc.displayNr = 0; // Tells us which question is active
             sc.questions = new Array(); // Prepare scope variable for question storage
@@ -256,11 +458,16 @@
 
 			// Mark first one as active
 			sc.questions[0].active = true;
+			sc.questionsLoaded = true;
 		});
 
 		// Service calls this function after it gets answers from the database
 		aspoService.getAnswers().then(function (answers)
 		{
+		    var a = 0;
+			a += 1;
+		    while(!sc.questionsLoaded);
+		    
 			// Go through all the data we get
 			for(var i = 0; i < answers.length; i++)
 			{
@@ -283,11 +490,16 @@
 					return a.order - b.order;
 				});
 			}
+			sc.answersLoaded = true;
 		});
 
 		// Service calls this function after it gets disables from the database
 		aspoService.getDisables().then(function (disables)
 		{
+		    var a = 0;
+			a += 1;
+		    while(!sc.answersLoaded);
+		    
 			// Go through all the data we get
 			for(var i = 0; i < disables.length; i++)
 			{
@@ -325,11 +537,16 @@
 						sc.questions[j].disables.push(disables[i]);
 				}
             }
+            sc.disablesLoaded = true;
 		});
 
 		// Service calls this function after it gets weights from the database
 		aspoService.getAnswerWeights().then(function (weights)
 		{
+		    var a = 0;
+			a += 1;
+		    while(!sc.disablesLoaded);
+		    
 			// Check through all the answer weights we got
 			for(var i = 0; i < weights.length; i++)
 			{
@@ -345,6 +562,8 @@
 					}
 				}
 			}
+			sc.answerWeightsLoaded = true;
 		});
+		*/
 	}]);
 })();
