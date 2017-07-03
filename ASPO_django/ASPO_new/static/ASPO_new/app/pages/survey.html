@@ -15,10 +15,10 @@
 
 						<ul id="ulSurvey" ng-switch on="q.type">
 							<li ng-repeat="ans in q.answers" ng-switch-when="checkbox">
-								<label><input name="ans{{q.pk}}" type="checkbox" ng-change="changeCheckbox()" ng-model="ans.selected"> {{ ans.text }}</label>
+								<label><input name="ans{{q.pk}}_{{ans.pk}}" type="checkbox" ng-change="changeCheckbox()" ng-model="ans.selected"> {{ ans.text }}</label>
 							</li>
 							<li ng-repeat="ans in q.answers" ng-switch-when="radio">
-								<label><input name="ans{{q.pk}}" type="radio" ng-change="change(ans.pk)" ng-model="ans.selected" ng-value="true"> {{ ans.text }}</label>
+								<label><input name="ans{{q.pk}}_{{ans.pk}}" type="radio" ng-change="change(ans.pk)" ng-model="ans.selected" ng-value="true"> {{ ans.text }}</label>
 							</li>
 						</ul>
 
