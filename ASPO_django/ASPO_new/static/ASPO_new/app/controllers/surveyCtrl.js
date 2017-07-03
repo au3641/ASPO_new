@@ -1,50 +1,50 @@
 (function () {
     "use strict";
 
-    angular.module("ASPO").controller('SurveyCtrl', ["$scope", "AspoService", function ($scope, aspoService) {
+    angular.module("ASPO").controller('SurveyCtrl', ["$scope", "AspoService", function (sc, aspoService) {
 
-		$scope.displayNr = -1; 		// Index of currently displayed question in carousel
-		$scope.actualDisplayNumber = 1;	// Displayed question number shown to user (how many questions did the user see, ignores hidden questions)
-		$scope.alertLevel = -1;		// Controls which alert message to display at the end of survey
-		$scope.moveOn = false;		// If false, "next" button will be greyed out
-		$scope.userConsent = false;	// Tells us if user consented to send his answers for research - by default user consent must be set to false
+		sc.displayNr = -1; 		// Index of currently displayed question in carousel
+		sc.actualDisplayNumber = 1;	// Displayed question number shown to user (how many questions did the user see, ignores hidden questions)
+		sc.alertLevel = -1;		// Controls which alert message to display at the end of survey
+		sc.moveOn = false;		// If false, "next" button will be greyed out
+		sc.userConsent = false;	// Tells us if user consented to send his answers for research - by default user consent must be set to false
 
 		// Function is called when radio button selection changes
-		$scope.change = function(pk){
-			$scope.moveOn = true;	// Enable "next" button
+		sc.change = function(pk){
+			sc.moveOn = true;	// Enable "next" button
 
 			// When radio button selection changes, reset selected variable of other answers in the question
-			for(var i = 0; i < $scope.questions[$scope.displayNr].answers.length; i++)
+			for(var i = 0; i < sc.questions[sc.displayNr].answers.length; i++)
 			{
-                if (pk == $scope.questions[$scope.displayNr].answers[i].pk)
-                    $scope.questions[$scope.displayNr].answers[i].selected = true;
+                if (pk == sc.questions[sc.displayNr].answers[i].pk)
+                    sc.questions[sc.displayNr].answers[i].selected = true;
                 else
-                    $scope.questions[$scope.displayNr].answers[i].selected = false;
+                    sc.questions[sc.displayNr].answers[i].selected = false;
             }
 		};
 
 		// Called when returning to previous question
-		$scope.back = function() 
+		sc.back = function() 
 		{
 			// Make current question inactive (hide on front-end)
-			$scope.questions[$scope.displayNr].active = false;
+			sc.questions[sc.displayNr].active = false;
 
 			// if not on first question
-			if($scope.displayNr > 0)
+			if(sc.displayNr > 0)
 			{
 				// itterate thorugh hidden (ninja) questions in reverse until we find one that is not hidden
 				do
 				{
-					if($scope.questions[$scope.displayNr].ninja)  // if question is hidden reset it's ninja flag to default
-						$scope.questions[$scope.displayNr].ninja = false;
-					$scope.displayNr--;
-				}while($scope.questions[$scope.displayNr].ninja);
-				$scope.actualDisplayNumber--; // decrease number displayed to user by 1
+					if(sc.questions[sc.displayNr].ninja)  // if question is hidden reset it's ninja flag to default
+						sc.questions[sc.displayNr].ninja = false;
+					sc.displayNr--;
+				}while(sc.questions[sc.displayNr].ninja);
+				sc.actualDisplayNumber--; // decrease number displayed to user by 1
             }
 
             // Activate question that was not hidden
-			$scope.questions[$scope.displayNr].active = true;
-			$scope.moveOn = true; // enable "next" button, since anwsers were already chosen on this question
+			sc.questions[sc.displayNr].active = true;
+			sc.moveOn = true; // enable "next" button, since anwsers were already chosen on this question
 		};
 
 		// Called after the last (non-hidden) question is answered
@@ -58,12 +58,12 @@
 			var pack = {answeredWith: new Array()};		// list of selected answers
 
 			// Count weight values for answered questions
-			$scope.questions.forEach(function(question)
+			sc.questions.forEach(function(question)
 			{
 				question.answers.forEach(function(answer)
                 {
                 	// if answer was selected, add it to pack
-                	if(answer.selected && (answer.pk != $scope.consentQuestion.consentConfirmPK ||answer.pk != $scope.consentQuestion.consentRefusePK))
+                	if(answer.selected && (answer.pk != sc.consentQuestion.consentConfirmPK ||answer.pk != sc.consentQuestion.consentRefusePK))
 						pack["answeredWith"].push(answer.pk);
 
 					if(answer.selected && answer.weight.length != 0)
@@ -91,7 +91,7 @@
 				alertlevel = 3; // red
 
 			// Set alert level variable that controls alert display
-			$scope.alertLevel = alertlevel;
+			sc.alertLevel = alertlevel;
 			/*
 			ZELENA, vsi odgovori zeleni, ali do vključno trije rumeni
 			RUMENA, če so zeleni in vsaj štirje rumeni; če sta 1 ali 2 roza in ostali zeleni/rumeni
@@ -99,33 +99,33 @@
 			 */
 
 			// Check through all answers on consent question
-			for(var i = 0; i < $scope.consentQuestion.answers.length; i++)
+			for(var i = 0; i < sc.consentQuestion.answers.length; i++)
 			{
 				// If selected answer matched consent confirm answer ID, then the user consented
-				if($scope.consentQuestion.answers[i].pk == $scope.consentQuestion.consentConfirmPK)
-					if($scope.consentQuestion.answers[i].selected)
-						$scope.userConsent = true;
+				if(sc.consentQuestion.answers[i].pk == sc.consentQuestion.consentConfirmPK)
+					if(sc.consentQuestion.answers[i].selected)
+						sc.userConsent = true;
 			}
 
 			// If user did not consent, drop all data in pack (do not send) and exit
-			if($scope.userConsent == false)
+			if(sc.userConsent == false)
 			{
                 pack = null;
                 return;
             }
 
             // If user did consent, send data and exit
-			if($scope.userConsent == true)
+			if(sc.userConsent == true)
 				aspoService.sendData(pack);
 
 			return;
 		}
 
 		// Called when procceding to next question
-		$scope.next = function() 
+		sc.next = function() 
 		{
 			// Make current question inactive (hide on front-end)
-			$scope.questions[$scope.displayNr].active = false;
+			sc.questions[sc.displayNr].active = false;
 
 			var skip; // do we skip the question?
 
@@ -134,8 +134,8 @@
 				skip = false; // reset variable
 
 				// Go the the next question if any, otherwise procced to the results
-				if($scope.displayNr < $scope.questions.length - 1)
-					$scope.displayNr++;
+				if(sc.displayNr < sc.questions.length - 1)
+					sc.displayNr++;
 				else
 					end();
 
@@ -146,24 +146,24 @@
 				// Usually n*m*o ends up around 8-10
 
 				// Check through possible disables for current question
-				for(var i = 0; i < $scope.questions[$scope.displayNr].disables.length && !skip; i++)
+				for(var i = 0; i < sc.questions[sc.displayNr].disables.length && !skip; i++)
 				{
 					// Check through answers required for these disables to apply
-					for(var j = 0; j < $scope.questions[$scope.displayNr].disables[i].requiredAnswers.length && !skip; j++)
+					for(var j = 0; j < sc.questions[sc.displayNr].disables[i].requiredAnswers.length && !skip; j++)
 					{
-						var relatedQID = $scope.questions[$scope.displayNr].disables[i].relatedQAs[j]; // question index of required answer
+						var relatedQID = sc.questions[sc.displayNr].disables[i].relatedQAs[j]; // question index of required answer
 
 						// Check through all answers on question that has at least one required answer
-						for(var k = 0; k < $scope.questions[relatedQID].answers.length; k++)
+						for(var k = 0; k < sc.questions[relatedQID].answers.length; k++)
 						{
 							// If the answer in required answer
-							if($scope.questions[relatedQID].answers[k].pk == $scope.questions[$scope.displayNr].disables[i].requiredAnswers[j])
+							if(sc.questions[relatedQID].answers[k].pk == sc.questions[sc.displayNr].disables[i].requiredAnswers[j])
 							{
 								// and if required answer is also selected
-								if($scope.questions[relatedQID].answers[k].selected)
+								if(sc.questions[relatedQID].answers[k].selected)
 								{
 									// then skip current question
-									$scope.questions[$scope.displayNr].ninja = true;
+									sc.questions[sc.displayNr].ninja = true;
                                     skip = true;
                                     break;
                                 }
@@ -173,29 +173,29 @@
 				}
 			}while(skip); // continue looping through questions until we find one that is not disabled
 
-			$scope.questions[$scope.displayNr].active = true; // show question to the user
-			$scope.moveOn = false; // disable "next" button (until user answers)
+			sc.questions[sc.displayNr].active = true; // show question to the user
+			sc.moveOn = false; // disable "next" button (until user answers)
 
 			// if the question already has an answer selected or if this is a multiple-selection question
 			// then re-enable "next" button
-			for(var i = 0; i < $scope.questions[$scope.displayNr].answers.length; i++)
+			for(var i = 0; i < sc.questions[sc.displayNr].answers.length; i++)
 			{
-				if($scope.questions[$scope.displayNr].answers[i].selected == true || $scope.questions[$scope.displayNr].type == "checkbox")
+				if(sc.questions[sc.displayNr].answers[i].selected == true || sc.questions[sc.displayNr].type == "checkbox")
 				{
-                    $scope.moveOn = true;
+                    sc.moveOn = true;
                     break;
                 }
 			}
 
 			// Increase displayed number by 1
-			$scope.actualDisplayNumber++;
+			sc.actualDisplayNumber++;
 		};
 
 		// This function is executed first at survey load
 		aspoService.getQuestionnaire().then(function (questionnaire)
         {
         	// We get all the data from the database about our questionnaire and save it in scope
-            $scope.questionnaire = questionnaire[0];
+            sc.questionnaire = questionnaire[0];
         });
 
 		// Service calls this function after it gets questions from the database
@@ -213,45 +213,45 @@
 				// if question is ninja, then do not send it's answer in a result
 			}
 
-			$scope.displayNr = 0; // Tells us which question is active
-            $scope.questions = new Array(); // Prepare scope variable for question storage
+			sc.displayNr = 0; // Tells us which question is active
+            sc.questions = new Array(); // Prepare scope variable for question storage
 
             // Only keep questions from selected questionnaire (select questionnaire in *service.js
             for(var i = 0; i < questions.length; i++)
             {
-                if(questions[i].questionnaire == $scope.questionnaire.pk)
-                    $scope.questions.push(questions[i]);
+                if(questions[i].questionnaire == sc.questionnaire.pk)
+                    sc.questions.push(questions[i]);
             }
 
             // Create consent question on scope for quick access later
-			$scope.consentQuestion = {};
-            $scope.consentQuestion.tid = $scope.questions.length;
-            $scope.consentQuestion.pk = -1;
-            $scope.consentQuestion.questionnaire = $scope.questionnaire.pk;
-            $scope.consentQuestion.text = $scope.questionnaire.consentQuestionText;
-            $scope.consentQuestion.order = $scope.questionnaire.consentShowOrder;
-            $scope.consentQuestion.type = "radio";
-            $scope.consentQuestion.active = false;
-            $scope.consentQuestion.answers = [];
-            $scope.consentQuestion.disables = [];
-            $scope.consentQuestion.ninja = false;
+			sc.consentQuestion = {};
+            sc.consentQuestion.tid = sc.questions.length;
+            sc.consentQuestion.pk = -1;
+            sc.consentQuestion.questionnaire = sc.questionnaire.pk;
+            sc.consentQuestion.text = sc.questionnaire.consentQuestionText;
+            sc.consentQuestion.order = sc.questionnaire.consentShowOrder;
+            sc.consentQuestion.type = "radio";
+            sc.consentQuestion.active = false;
+            sc.consentQuestion.answers = [];
+            sc.consentQuestion.disables = [];
+            sc.consentQuestion.ninja = false;
 
             // -1 private key is accept, -2 is refuse
-            $scope.consentQuestion.answers.push({pk: -1, question: -1, text: $scope.questionnaire.consentAcceptText, order: 1, weight: []});
-            $scope.consentQuestion.answers.push({pk: -2, question: -1, text: $scope.questionnaire.consentRefuseText, order: 2, weight: []});
-            $scope.consentQuestion.consentConfirmPK = -1;
-            $scope.consentQuestion.consentRefusePK = -1;
+            sc.consentQuestion.answers.push({pk: -1, question: -1, text: sc.questionnaire.consentAcceptText, order: 1, weight: []});
+            sc.consentQuestion.answers.push({pk: -2, question: -1, text: sc.questionnaire.consentRefuseText, order: 2, weight: []});
+            sc.consentQuestion.consentConfirmPK = -1;
+            sc.consentQuestion.consentRefusePK = -1;
 
             // Add consent question to question set, just before ordering
-            $scope.questions.push($scope.consentQuestion);
+            sc.questions.push(sc.consentQuestion);
 
-			$scope.questions.sort(function (a, b)
+			sc.questions.sort(function (a, b)
 			{
 				return a.order - b.order;
 			});
 
 			// Mark first one as active
-			$scope.questions[0].active = true;
+			sc.questions[0].active = true;
 		});
 
 		// Service calls this function after it gets answers from the database
@@ -263,18 +263,18 @@
 				answers[i].selected = false; // did user select this question
 				answers[i].weight = -1;		 // answer weight (or in our case alert level)
 
-				for(var j = 0; j < $scope.questions.length; j++)
+				for(var j = 0; j < sc.questions.length; j++)
 				{
 					// Add answer to the correspoinding question
-					if($scope.questions[j].pk == answers[i].question)
-                        $scope.questions[j].answers.push(answers[i]);
+					if(sc.questions[j].pk == answers[i].question)
+                        sc.questions[j].answers.push(answers[i]);
 				}
 			}
 
 			// Sort answers on each question in ascending order
-			for(var i = 0; i < $scope.questions.length; i++)
+			for(var i = 0; i < sc.questions.length; i++)
 			{
-				$scope.questions[i].answers.sort(function(a, b)
+				sc.questions[i].answers.sort(function(a, b)
 				{
 					return a.order - b.order;
 				});
@@ -302,23 +302,23 @@
 				for(var j = 0; j < disables[i].requiredAnswers.length; j++)
 				{
 					// Check thorugh every possible questions
-					for(var k = 0; k < $scope.questions.length; k++)
+					for(var k = 0; k < sc.questions.length; k++)
 					{
 						// If answer we seek is in this question
-						for(var l = 0; l < $scope.questions[k].answers.length; l++)
+						for(var l = 0; l < sc.questions[k].answers.length; l++)
 						{
-                            if ($scope.questions[k].answers[l].pk == disables[i].requiredAnswers[j])
+                            if (sc.questions[k].answers[l].pk == disables[i].requiredAnswers[j])
                                 disables[i].relatedQAs.push(k); // Add question id to related
                         }
 					}
 				}
 
 				// Attach this disable to every question it can disable
-				for(var j = 0; j < $scope.questions.length; j++)
+				for(var j = 0; j < sc.questions.length; j++)
 				{
 					// Add disable to the correspoinding question
-					if($scope.questions[j].pk == disables[i].question)
-						$scope.questions[j].disables.push(disables[i]);
+					if(sc.questions[j].pk == disables[i].question)
+						sc.questions[j].disables.push(disables[i]);
 				}
             }
 		});
@@ -330,14 +330,14 @@
 			for(var i = 0; i < weights.length; i++)
 			{
 				// Check through every question
-				for(var j = 0; j < $scope.questions.length; j++)
+				for(var j = 0; j < sc.questions.length; j++)
 				{
 					// Check through every answer on this question
-					for(var k = 0; k < $scope.questions[j].answers.length; k++)
+					for(var k = 0; k < sc.questions[j].answers.length; k++)
 					{
 						// If current weight belongs to current answer
-						if($scope.questions[j].answers[k].pk == weights[i].answer)
-							$scope.questions[j].answers[k].weight = weights[i]; // add weight value to the answer
+						if(sc.questions[j].answers[k].pk == weights[i].answer)
+							sc.questions[j].answers[k].weight = weights[i]; // add weight value to the answer
 					}
 				}
 			}
