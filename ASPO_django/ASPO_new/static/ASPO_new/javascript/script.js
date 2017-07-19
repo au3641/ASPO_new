@@ -46,48 +46,38 @@ $(document).ready(function () {
 
 
 function openDialog(img, txt, appropriate) {
-	var allowInappropriateImgs = localStorage.allowInappropriate == null ? false : localStorage.allowInappropriate;
+	$.featherlight("\
+	<span id='display-warning'>																			\
+		<span id='warning-title'>Opozorilo!																\
+			<br /> 																						\
+			<br /> 																						\
+		</span>																							\
+																										\
+		Strinjam se z ogledom nazornega slikovnega gradiva.												\
+		<br /> 																							\
+		<br /> 																							\
+		<br /> 																							\
+																										\
+		<div id='middle'>																				\
+			<button class='btn btn-primary' id='display-btn-disallow'>Ne strinjam se!</button> 			\
+			<button class='btn btn-primary' id='display-btn-allow'>Strinjam se!</button> 				\
+		</div>																							\
+																										\
+		<br /> 																							\
+	</span>																								\
+	<span id='show-image' style='display: none; width: 100%'> 														\
+		<img class='lightbox-img' src='" + img + "' /><p>" + txt + "</p>								\
+	</span> 																							\
+	");
 	
-	// !allowInappropriateImgs && !appropriate
-	if(!appropriate)
-	{
-		$.featherlight("\
-		<span id='display-warning'>																			\
-			<span id='warning-title'>Opozorilo!																\
-				<br /> 																						\
-				<br /> 																						\
-			</span>																							\
-																											\
-			Strinjam se z ogledom nazornega slikovnega gradiva.												\
-			<br /> 																							\
-			<br /> 																							\
-			<br /> 																							\
-																											\
-			<div id='middle'>																				\
-				<button class='btn btn-primary' id='display-btn-disallow'>Ne strinjam se!</button> 			\
-				<button class='btn btn-primary' id='display-btn-allow'>Strinjam se!</button> 				\
-			</div>																							\
-																											\
-			<br /> 																							\
-		</span>																								\
-		<span id='show-image' style='display: none; width: 100%'> 														\
-			<img class='lightbox-img' src='" + img + "' /><p>" + txt + "</p>								\
-		</span> 																							\
-		");
-		
-		var current = $.featherlight.current();
-	
-		$("#display-btn-disallow").click(function() {
-			current.close();
-		});
-		$("#display-btn-allow").click(function() {
-			localStorage.allowInappropriate = true;
-			$("#display-warning").slideToggle(1000);
-			$("#show-image").slideToggle(1000);
-		});
-	}
-	else 
-	{
-		$.featherlight("<img src=" + img + " /><p>" + txt + "</p>");
-	}
+	var current = $.featherlight.current();
+
+	$("#display-btn-disallow").click(function() {
+		current.close();
+	});
+	$("#display-btn-allow").click(function() {
+		localStorage.allowInappropriate = true;
+		$("#display-warning").slideToggle(1000);
+		$("#show-image").slideToggle(1000);
+	});
 }

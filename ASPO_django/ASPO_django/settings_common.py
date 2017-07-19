@@ -114,3 +114,13 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 0
 }
+
+# New in django 1.11, will remove csrf cookie and make it a session data instead
+CSRF_USE_SESSIONS = True
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
