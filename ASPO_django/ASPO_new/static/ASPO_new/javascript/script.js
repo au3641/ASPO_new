@@ -76,7 +76,6 @@ function openDialog(img, txt, appropriate) {
 		current.close();
 	});
 	$("#display-btn-allow").click(function() {
-		localStorage.allowInappropriate = true;
 		$("#display-warning").slideToggle(1000);
 		$("#show-image").slideToggle(1000);
 	});
